@@ -7,22 +7,23 @@ const page = { num: 1 };
  * @function getPokemon
  * Função que extrai dados da API de pokenos pokeapi.co
  */
-async function getPokemon(pokemon) {
+async function getPokemon(poke_number) {
     const response_1 = await fetch(
-        `https://pokeapi.co/api/v2/pokemon/${pokemon}`,
+        `https://pokeapi.co/api/v2/pokemon/${poke_number}`,
     );
-    const data_1 = await response_1.json();
-
     const response_2 = await fetch(
-        `https://pokeapi.co/api/v2/pokemon-species/${pokemon}`,
+        `https://pokeapi.co/api/v2/pokemon-species/${poke_number}`,
     );
-    const data_2 = await response_2.json();
+    const data = await response_1.json();
+    const description = await response_2.json();
 
-    const pokeImage = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon}.png`;
-    const pokeName = data_1.name;
-    const pokeId = data_1.id;
-    const pokeTypes = data_1.types.map(type => type.type.name).join(' ');
-    const pokeDescrip = data_2.flavor_text_entries[0].flavor_text;
+    const pokemon = {
+        name: data.name,
+        id: data.id,
+        image: data.sprites['front_default'],
+        type: data.types.map(type => type.type.name).join(' '),
+        description: description.flavor_text_entries[0].flavor_text,
+    };
 
     document.querySelector('#cards').insertAdjacentHTML(
         'beforeend',
@@ -30,21 +31,21 @@ async function getPokemon(pokemon) {
   <article class="card">
     <div class="flip">
       <div class="card_front">
-          <img class="image" src=${pokeImage}>
+          <img class="image" src=${pokemon.image} alt="imagem do pokemon ${pokemon.name}">
           <div class="card-text">
-              <h2 class="name">${pokeName}</h2>
-              <p class="descrip">Nº ${pokeId}</p>
+              <h2 class="name">${pokemon.name}</h2>
+              <p class="descrip">Nº ${pokemon.id}</p>
               <h4>Type</h4>
-              <p class="descrip">${pokeTypes}</p>
+              <p class="descrip">${pokemon.type}</p>
               
           </div>
       </div>
     
       <div class="card_back">
           <div class="card-text">
-              <h2 class="name">${pokeName}</h2>
+              <h2 class="name">${pokemon.name}</h2>
               <h4>Description</h4>
-              <p class="descrip">${pokeDescrip}</p>
+              <p class="descrip">${pokemon.description}</p>
           </div>
       </div>
     </div>
