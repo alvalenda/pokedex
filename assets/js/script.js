@@ -8,19 +8,21 @@ const page = { num: 1 };
  * Função que extrai dados da API de pokenos pokeapi.co
  */
 async function getPokemon(pokemon) {
-    let response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
-    let data = await response.json();
+    const response_1 = await fetch(
+        `https://pokeapi.co/api/v2/pokemon/${pokemon}`,
+    );
+    const data_1 = await response_1.json();
 
-    let response2 = await fetch(
+    const response_2 = await fetch(
         `https://pokeapi.co/api/v2/pokemon-species/${pokemon}`,
     );
-    let data2 = await response2.json();
+    const data_2 = await response_2.json();
 
-    let pokeImage = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon}.png`;
-    let pokeName = data.name;
-    let pokeId = data.id;
-    let pokeType = data.types[0].type.name;
-    let pokeDescrip = data2.flavor_text_entries[0].flavor_text;
+    const pokeImage = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon}.png`;
+    const pokeName = data_1.name;
+    const pokeId = data_1.id;
+    const pokeTypes = data_1.types.map(type => type.type.name).join(' ');
+    const pokeDescrip = data_2.flavor_text_entries[0].flavor_text;
 
     document.querySelector('#cards').insertAdjacentHTML(
         'beforeend',
@@ -33,7 +35,7 @@ async function getPokemon(pokemon) {
               <h2 class="name">${pokeName}</h2>
               <p class="descrip">Nº ${pokeId}</p>
               <h4>Type</h4>
-              <p class="descrip">${pokeType}</p>
+              <p class="descrip">${pokeTypes}</p>
               
           </div>
       </div>
