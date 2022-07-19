@@ -1,22 +1,22 @@
 /**
- * @param {number} page variável global
+ * @param {object} page variável global, conta número de pokemons pegos na API
  */
-let page = 1;
+const page = { num: 1 };
 
 /**
  * @function getPokemon
  * Função que extrai dados da API de pokenos pokeapi.co
  */
-async function getPokemon() {
-    let response = await fetch(`https://pokeapi.co/api/v2/pokemon/${page}`);
+async function getPokemon(pokemon) {
+    let response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
     let data = await response.json();
 
     let response2 = await fetch(
-        `https://pokeapi.co/api/v2/pokemon-species/${page}`,
+        `https://pokeapi.co/api/v2/pokemon-species/${pokemon}`,
     );
     let data2 = await response2.json();
 
-    let pokeImage = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${page}.png`;
+    let pokeImage = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon}.png`;
     let pokeName = data.name;
     let pokeId = data.id;
     let pokeType = data.types[0].type.name;
@@ -56,8 +56,8 @@ async function getPokemon() {
  * Função viewMore da aula da API RickAndMorty
  */
 function viewMore() {
-    page++;
-    getPokemon();
+    page.num++;
+    getPokemon(page.num);
 }
 
 /**
@@ -78,6 +78,9 @@ window.addEventListener('scroll', () => {
  * description: Função Principal da pokedex que inicia @getPokemon
  */
 function main() {
-    getPokemon();
+    while (page.num < 20) {
+        getPokemon(page.num);
+        page.num++;
+    }
 }
 main();
