@@ -1,5 +1,9 @@
 /**
- * @param {object} page variável global, conta número de pokemons pegos na API
+ * Variável global
+ * page.num: Acumula número do pokemon a ser pego na API
+ * page.tag: Controla intervalo para interno da função @viewMore
+ * value: true  => @viewMore desabilitada
+ * value: false => @viewMore habilitada
  */
 const page = { num: 1, tag: false };
 
@@ -56,7 +60,7 @@ async function getPokemon(poke_number) {
 
 /**
  * @function viewMore
- * Chama a função @getPokemon mais vinte vezes. Tem um intervalo interno de 2s para poder ser chamada novamente.
+ * Chama a função @getPokemon vinte vezes. Tem um intervalo interno controlado pela variável @page
  */
 function viewMore() {
     for (let i = 0; i < 20; i++) {
