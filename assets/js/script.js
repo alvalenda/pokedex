@@ -1,7 +1,7 @@
 /**
  * @param {object} page variável global, conta número de pokemons pegos na API
  */
-const page = { num: 1 };
+const page = { num: 1, tag: false };
 
 /**
  * @function getPokemon
@@ -56,11 +56,17 @@ async function getPokemon(poke_number) {
 
 /**
  * @function viewMore
- * Função viewMore da aula da API RickAndMorty
+ * Chama a função @getPokemon mais vinte vezes. Tem um intervalo interno de 2s para poder ser chamada novamente.
  */
 function viewMore() {
-    page.num++;
-    getPokemon(page.num);
+    for (let i = 0; i < 20; i++) {
+        page.num++;
+        getPokemon(page.num);
+    }
+
+    setTimeout(() => {
+        page.tag = false;
+    }, 2000);
 }
 
 /**
@@ -72,6 +78,8 @@ window.addEventListener('scroll', () => {
     const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
 
     if (scrollTop + clientHeight >= scrollHeight - 300) {
+        if (page.tag === true) return;
+        page.tag = true;
         viewMore();
     }
 });
