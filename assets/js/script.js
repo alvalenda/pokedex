@@ -33,24 +33,18 @@ async function getPokemon(poke_number) {
     const html = `
     <article class="card">
       <div class="flip">
-        <div class="card_front">
+
             <img class="image" src=${pokemon.image} alt="imagem do pokemon ${pokemon.name}">
+            
             <div class="card-text">
                 <h2 class="card_title">${pokemon.name}</h2>
                 <p class="card_subtitle">Nº ${pokemon.id}</p>
                 <h4>Type</h4>
                 <p class="card_subtitle">${pokemon.type}</p>
-                
-            </div>
-        </div>
-      
-        <div class="card_back">
-            <div class="card-text">
-                <h2 class="card_title">${pokemon.name}</h2>
                 <h4>Description</h4>
                 <p class="card_subtitle">${pokemon.description}</p>
             </div>
-        </div>
+
       </div>
     </article>
     `;
