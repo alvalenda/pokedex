@@ -21,27 +21,26 @@ async function getPokemon(poke_number) {
 
     const data = await data_fetch.json();
     const description = await description_fetch.json();
-
+    const types = data.types.map(type => type.type.name);
     const pokemon = {
         name: data.name,
         id: data.id,
         image: data.sprites['other']['official-artwork']['front_default'],
-        type: data.types.map(type => type.type.name).join(' '),
+        type: types.join(' | '),
         description: description.flavor_text_entries[0].flavor_text,
     };
 
     const html = `
-    <article class="card">
+    <li class="card ${types[0]}">
       <div class="flip">
             <img class="image" src=${pokemon.image} alt="imagem do pokemon ${pokemon.name}">
             <div class="card-text">
-                <h2 class="card_title">${pokemon.name}</h2>
-                <p class="card_subtitle">Nº ${pokemon.id}</p>
-                <h4>Type</h4>
+                <h2 class="card_title">${pokemon.id}. ${pokemon.name}</h2>
+                <h3>Type</h3>
                 <p class="card_subtitle">${pokemon.type}</p>
-                <h4>Description</h4>
+                <h3>Description</h3>
                 <p class="card_subtitle">${pokemon.description}</p>
-            </div>
+            </li>
 
       </div>
     </article>
