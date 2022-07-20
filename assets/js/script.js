@@ -12,50 +12,50 @@ const page = { num: 1, tag: false };
  * Função que extrai dados da API de pokenos pokeapi.co
  */
 async function getPokemon(poke_number) {
-    const response_1 = await fetch(
+    const data_fetch = await fetch(
         `https://pokeapi.co/api/v2/pokemon/${poke_number}`,
     );
-    const response_2 = await fetch(
+    const description_fetch = await fetch(
         `https://pokeapi.co/api/v2/pokemon-species/${poke_number}`,
     );
-    const data = await response_1.json();
-    const description = await response_2.json();
+
+    const data = await data_fetch.json();
+    const description = await description_fetch.json();
 
     const pokemon = {
         name: data.name,
         id: data.id,
-        image: data.sprites['front_default'],
+        image: data.sprites['other']['official-artwork']['front_default'],
         type: data.types.map(type => type.type.name).join(' '),
         description: description.flavor_text_entries[0].flavor_text,
     };
 
-    document.querySelector('#cards').insertAdjacentHTML(
-        'beforeend',
-        `
-  <article class="card">
-    <div class="flip">
-      <div class="card_front">
-          <img class="image" src=${pokemon.image} alt="imagem do pokemon ${pokemon.name}">
-          <div class="card-text">
-              <h2 class="name">${pokemon.name}</h2>
-              <p class="descrip">Nº ${pokemon.id}</p>
-              <h4>Type</h4>
-              <p class="descrip">${pokemon.type}</p>
-              
-          </div>
+    const html = `
+    <article class="card">
+      <div class="flip">
+        <div class="card_front">
+            <img class="image" src=${pokemon.image} alt="imagem do pokemon ${pokemon.name}">
+            <div class="card-text">
+                <h2 class="card_title">${pokemon.name}</h2>
+                <p class="card_subtitle">Nº ${pokemon.id}</p>
+                <h4>Type</h4>
+                <p class="card_subtitle">${pokemon.type}</p>
+                
+            </div>
+        </div>
+      
+        <div class="card_back">
+            <div class="card-text">
+                <h2 class="card_title">${pokemon.name}</h2>
+                <h4>Description</h4>
+                <p class="card_subtitle">${pokemon.description}</p>
+            </div>
+        </div>
       </div>
-    
-      <div class="card_back">
-          <div class="card-text">
-              <h2 class="name">${pokemon.name}</h2>
-              <h4>Description</h4>
-              <p class="descrip">${pokemon.description}</p>
-          </div>
-      </div>
-    </div>
-  </article>
-      `,
-    );
+    </article>
+    `;
+
+    document.querySelector('#cards').insertAdjacentHTML('beforeend', html);
 }
 
 /**
@@ -70,7 +70,7 @@ function viewMore() {
 
     setTimeout(() => {
         page.tag = false;
-    }, 2000);
+    }, 1000);
 }
 
 /**
