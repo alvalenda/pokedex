@@ -13,6 +13,7 @@ const pokedex = document.querySelector('#cards');
  * @function getPokemons
  * description: Access pokemon API (pokeapi.co) to manipulate data and create the pokemon objects, then inject on html document
  * @param {array} pokeArray an Array of 20 integer elements representing pokemon id's
+ * @returns {Promise} Promise wrapping the array of pokemon objects
  */
 async function getPokemons(pokeArray) {
     const [data, description] = [[], []];
@@ -45,7 +46,7 @@ async function getPokemons(pokeArray) {
         description: result.description,
     }));
 
-    insertCardinHTML(pokemon);
+    return pokemon;
 }
 
 /**
@@ -102,7 +103,7 @@ function descriptionInEnglish(description) {
 function viewMore(pokeArray) {
     if (page.tag === true) return;
     page.tag = true;
-    getPokemons(pokeArray());
+    getPokemons(pokeArray()).then(pokemon => insertCardinHTML(pokemon));
 
     setTimeout(() => {
         page.tag = false;
@@ -138,7 +139,6 @@ function main() {
             .map(() => page.num++);
 
     getPokemonbyScroll(pokeArray);
-
-    getPokemons(pokeArray());
+    getPokemons(pokeArray()).then(pokemon => insertCardinHTML(pokemon));
 }
 main();
