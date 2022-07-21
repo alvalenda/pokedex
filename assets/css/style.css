@@ -42,9 +42,9 @@ header {
     top: 0;
     left: 0;
     background-color: rgba(100, 45, 45, 0.5);
-    backdrop-filter: blur(240px);
-    -webkit-backdrop-filter: blur(240px);
     border-bottom: 2px solid rgba(100, 45, 45, 0.2);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
 }
 
 header h1 {
