@@ -49,7 +49,7 @@ header h1 {
 li.card {
     background-color: cornsilk;
     border-radius: 15px;
-    box-shadow: 3px 3px rgb(20, 151, 151);
+    box-shadow: 3px 3px rgba(100, 45, 45, 0.35);
     gap: 2rem;
     padding: 1rem;
     display: flex;
@@ -58,14 +58,28 @@ li.card {
     justify-self: center;
 }
 
+li.card:hover{
+    animation: bounce 0.25s linear;
+    cursor: pointer;
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(0);
+    }
+
+    25% {
+        transform: translateY(-0.35rem);
+    }
+}
+
 /* Background Color Per Types*/
 li.grass {
-    background-color: rgba(125, 220, 150, 0.2);
+    background-color: rgba(125, 220, 150, 0.3);
 }
 
 li.fire {
     background-color: rgba(220, 48, 40, 0.3);
-
 }
 
 li.water {
@@ -97,7 +111,7 @@ li.electric {
 }
 
 li.fighting {
-    background-color: rgba(240, 128, 48, .4);
+    background-color: rgba(240, 128, 48, 0.4);
 }
 
 li.rock {
@@ -113,15 +127,15 @@ li.psychic {
 }
 
 li.dark {
-    background-color: rgba(0, 0, 150, 0.3)
+    background-color: rgba(0, 0, 150, 0.3);
 }
 
 li.dragon {
-    background-color: rgba(0, 17, 255, 0.3)
+    background-color: rgba(0, 17, 255, 0.3);
 }
 
 li.steel {
-    background-color: rgba(184, 184, 208, 0.9)
+    background-color: rgba(184, 184, 208, 0.9);
 }
 
 /* Continuação de Cards*/
@@ -140,7 +154,7 @@ li.steel {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0.5rem 5rem 0.5rem 5rem;
+    padding: 0.5rem 4rem 0.5rem 4rem;
     text-transform: capitalize;
 }
 
