@@ -77,8 +77,8 @@ function descriptionInEnglish(description) {
  */
 function viewMore() {
     for (let i = 0; i < 20; i++) {
-        page.num++;
         getPokemon(page.num);
+        page.num++;
     }
 
     setTimeout(() => {
