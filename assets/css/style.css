@@ -15,6 +15,21 @@ body {
     height: 100vh;
 }
 
+a {
+    text-decoration: none;
+}
+
+a:link {
+    text-decoration: inherit;
+    color: inherit;
+}
+
+a:visited {
+    text-decoration: inherit;
+    color: inherit;
+    cursor: auto;
+}
+
 ul,
 li {
     list-style: none;
@@ -27,6 +42,9 @@ header {
     top: 0;
     left: 0;
     background-color: rgba(100, 45, 45, 0.5);
+    backdrop-filter: blur(240px);
+    -webkit-backdrop-filter: blur(240px);
+    border-bottom: 2px solid rgba(100, 45, 45, 0.2);
 }
 
 header h1 {
@@ -58,7 +76,7 @@ li.card {
     justify-self: center;
 }
 
-li.card:hover{
+li.card:hover {
     animation: bounce 0.25s linear;
     cursor: pointer;
 }
@@ -180,6 +198,7 @@ footer {
     position: fixed;
     bottom: 0;
     background-color: rgba(100, 45, 45, 0.5);
+    border-top: 2px solid rgba(100, 45, 45, 0.2);
 }
 
 footer section {
