@@ -1,65 +1,81 @@
 /**
- * Variável global
- * page.num: Acumula número do pokemon a ser pego na API
- * page.tag: Controla intervalo para interno da função @viewMore
- * value: true  => @viewMore desabilitada
- * value: false => @viewMore habilitada
+ * Global Variable
+ * page.num: Acumulates a number representing the pokemon id
+ * page.tag: Controls the internal cooldown of @viewMore
+ * value: true  => @viewMore disabled
+ * value: false => @viewMore enabled
  */
 const page = { num: 1, tag: false };
 
 /**
- * @function getPokemon
- * Função que extrai dados da API de pokenos pokeapi.co
+ * @function getPokemons
+ * description: Access pokemon API (pokeapi.co) to manipulate data and create the pokemon objects, then inject on html document
+ * @param {array} pokeArray an Array of 20 integer elements representing pokemon id's
  */
-async function getPokemon(poke_number) {
-    const data_fetch = await fetch(
-        `https://pokeapi.co/api/v2/pokemon/${poke_number}`,
-    );
-    const description_fetch = await fetch(
-        `https://pokeapi.co/api/v2/pokemon-species/${poke_number}`,
-    );
+async function getPokemons(pokeArray) {
+    const [data, description] = [[], []];
+    const pokedex = document.querySelector('#cards');
 
-    const data = await data_fetch.json();
-    const description = await description_fetch.json();
-    const types = data.types.map(type => type.type.name);
-    const pokemon = {
-        name: data.name,
-        id: data.id,
-        image: data.sprites['other']['official-artwork']['front_default'],
-        type: types.join(' | '),
-        description: descriptionInEnglish(description.flavor_text_entries),
+    for (const pokeNumber of pokeArray) {
+        data.push(
+            await fetch(`https://pokeapi.co/api/v2/pokemon/${pokeNumber}`).then(
+                response => response.json(),
+            ),
+        );
+
+        description.push(
+            await fetch(
+                `https://pokeapi.co/api/v2/pokemon-species/${pokeNumber}`,
+            ).then(response => response.json()),
+        );
+
+        // Adiciona description em Inglês no objeto data
+        data[description.length - 1]['description'] = descriptionInEnglish(
+            description[description.length - 1].flavor_text_entries,
+        );
+    }
+
+    const pokemon = data.map(result => ({
+        name: result.name,
+        id: result.id,
+        image: result.sprites['other']['official-artwork']['front_default'],
+        types: result.types.map(type => type.type.name),
+        type: result.types.map(type => type.type.name).join('&nbsp&nbsp'),
+        description: result.description,
+    }));
+
+    const createPokemons = pokemon => {
+        for (const pokecard of pokemon) {
+            const html = `
+        <li class="card ${pokecard.types[0]}">
+            <div class="flip">
+                <img class="image" src=${pokecard.image} alt="imagem do ${pokecard.name}">
+                <div class="card-text">
+                    <h2 class="card-title">${pokecard.id}. ${pokecard.name}</h2>
+                    <div class="card-type">
+                        <h3>Type</h3>
+                        <p class="card-subtitle">${pokecard.type}</p>
+                    </div>
+                    <h3>Description</h3>
+                        <p class="card-subtitle">${pokecard.description}</p>
+                </div>
+            </div>
+        </li>
+        `;
+            pokedex.insertAdjacentHTML('beforeend', html);
+        }
     };
 
-    const html = `
-    <li class="card ${types[0]}">
-      <div class="flip">
-            <img class="image" src=${pokemon.image} alt="imagem do ${pokemon.name}">
-            <div class="card-text">
-                <h2 class="card-title">${pokemon.id}. ${pokemon.name}</h2>
-                <div class="card-type">
-                <h3>Type</h3>
-                <p class="card-subtitle">${pokemon.type}</p>
-                </div>
-                <h3>Description</h3>
-                <p class="card-subtitle">${pokemon.description}</p>
-            </li>
-
-      </div>
-    </article>
-    `;
-
-    document.querySelector('#cards').insertAdjacentHTML('beforeend', html);
+    createPokemons(pokemon);
 }
 
 /**
  * @function descriptionInEnglish
- * Searches for a description in English language   and returns the corresponding
- * @param {object} description an object with a list of descriptions
+ * Searches for a description in English language and returns the corresponding string
+ * @param {object} description an object with an Array of descriptions strings
  * @returns a string containing the description in English language
  */
 function descriptionInEnglish(description) {
-    // description.flavor_text_entries
-    console.log(description);
     for (const text of description) {
         if (text.language.name === 'en') {
             const flavor_text = text.flavor_text
@@ -73,13 +89,11 @@ function descriptionInEnglish(description) {
 
 /**
  * @function viewMore
- * Chama a função @getPokemon vinte vezes. Tem um intervalo interno controlado pela variável @page
+ * Call the function @getPokemons passing an array of pokemon id's. Has an internal interval controlled by the  @page .tag key.
+ * @param {array} pokeArray an Array of 20 integer elements representing pokemon id's
  */
-function viewMore() {
-    for (let i = 0; i < 20; i++) {
-        getPokemon(page.num);
-        page.num++;
-    }
+function viewMore(pokeArray) {
+    getPokemons(pokeArray());
 
     setTimeout(() => {
         page.tag = false;
@@ -87,28 +101,35 @@ function viewMore() {
 }
 
 /**
- * @event addEventListener
- * @type {string, function}
- * addEventListener que chama @viewMore quando usuário chega ao final da página
+ * @function getPokemonbyScroll
+ * Starts an EventListener that will call @viewMore when the user scrolls down the page.
+ * @param {array} pokeArray an Array of 20 integer elements representing pokemon id's
  */
-window.addEventListener('scroll', () => {
-    const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+function getPokemonbyScroll(pokeArray) {
+    window.addEventListener('scroll', () => {
+        const { scrollTop, scrollHeight, clientHeight } =
+            document.documentElement;
 
-    if (scrollTop + clientHeight >= scrollHeight - 300) {
-        if (page.tag === true) return;
-        page.tag = true;
-        viewMore();
-    }
-});
+        if (scrollTop + clientHeight >= scrollHeight - 300) {
+            if (page.tag === true) return;
+            page.tag = true;
+            viewMore(pokeArray);
+        }
+    });
+}
 
 /**
- * @event main
- * description: Função Principal da pokedex que inicia @getPokemon
+ * @function main
+ * description: Creates and controlls pokearray, starts @getPokemonbyScroll and calls @getPokemons
  */
 function main() {
-    while (page.num < 21) {
-        getPokemon(page.num);
-        page.num++;
-    }
+    const pokeArray = () =>
+        Array(20)
+            .fill()
+            .map(() => page.num++);
+
+    getPokemonbyScroll(pokeArray);
+
+    getPokemons(pokeArray());
 }
 main();
