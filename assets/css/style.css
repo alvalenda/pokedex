@@ -43,8 +43,8 @@ header {
     left: 0;
     background-color: rgba(100, 45, 45, 0.5);
     border-bottom: 2px solid rgba(100, 45, 45, 0.2);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
 }
 
 header h1 {
@@ -199,6 +199,8 @@ footer {
     bottom: 0;
     background-color: rgba(100, 45, 45, 0.5);
     border-top: 2px solid rgba(100, 45, 45, 0.2);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
 }
 
 footer section {
