@@ -61,7 +61,10 @@ function descriptionInEnglish(description) {
     // description.flavor_text_entries
     console.log(description);
     for (const text of description) {
-        if (text.language.name === 'en') return text.flavor_text;
+        if (text.language.name === 'en') {
+            const flavor_text = text.flavor_text.replace('\u000c', ' ');
+            return flavor_text;
+        }
     }
     return 'Description not found.';
 }
