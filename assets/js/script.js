@@ -6,7 +6,9 @@
  * value: false => @viewMore enabled
  */
 const page = { num: 1, tag: false };
+const pokedex = document.querySelector('#cards');
 
+// FUNCTION THAT WILL BE CALLED TO INTERACT WITH THE API
 /**
  * @function getPokemons
  * description: Access pokemon API (pokeapi.co) to manipulate data and create the pokemon objects, then inject on html document
@@ -14,7 +16,6 @@ const page = { num: 1, tag: false };
  */
 async function getPokemons(pokeArray) {
     const [data, description] = [[], []];
-    const pokedex = document.querySelector('#cards');
 
     for (const pokeNumber of pokeArray) {
         data.push(
@@ -44,9 +45,17 @@ async function getPokemons(pokeArray) {
         description: result.description,
     }));
 
-    const createPokemons = pokemon => {
-        for (const pokecard of pokemon) {
-            const html = `
+    insertCardinHTML(pokemon);
+}
+
+/**
+ * @function insertCardinHTML
+ * description: Inject a list of pokemon into a html document
+ * @param {object:array} pokemon an array of pokemon objects to insert into the html document
+ */
+function insertCardinHTML(pokemon) {
+    for (const pokecard of pokemon) {
+        const html = `
         <li class="card ${pokecard.types[0]}">
             <div class="flip">
                 <img class="image" src=${pokecard.image} alt="imagem do ${pokecard.name}">
@@ -62,11 +71,8 @@ async function getPokemons(pokeArray) {
             </div>
         </li>
         `;
-            pokedex.insertAdjacentHTML('beforeend', html);
-        }
-    };
-
-    createPokemons(pokemon);
+        pokedex.insertAdjacentHTML('beforeend', html);
+    }
 }
 
 /**
@@ -87,17 +93,20 @@ function descriptionInEnglish(description) {
     return 'Description not found.';
 }
 
+// SECONDARY FUNCTIONS
 /**
  * @function viewMore
  * Call the function @getPokemons passing an array of pokemon id's. Has an internal interval controlled by the  @page .tag key.
  * @param {array} pokeArray an Array of 20 integer elements representing pokemon id's
  */
 function viewMore(pokeArray) {
+    if (page.tag === true) return;
+    page.tag = true;
     getPokemons(pokeArray());
 
     setTimeout(() => {
         page.tag = false;
-    }, 1000);
+    }, 2000);
 }
 
 /**
@@ -110,14 +119,14 @@ function getPokemonbyScroll(pokeArray) {
         const { scrollTop, scrollHeight, clientHeight } =
             document.documentElement;
 
-        if (scrollTop + clientHeight >= scrollHeight - 300) {
+        if (scrollTop + clientHeight >= scrollHeight - 350) {
             if (page.tag === true) return;
-            page.tag = true;
             viewMore(pokeArray);
         }
     });
 }
 
+// MAIN FUNCTION
 /**
  * @function main
  * description: Creates and controlls pokearray, starts @getPokemonbyScroll and calls @getPokemons
