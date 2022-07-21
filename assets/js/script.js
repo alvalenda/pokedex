@@ -104,7 +104,7 @@ window.addEventListener('scroll', () => {
  * description: Função Principal da pokedex que inicia @getPokemon
  */
 function main() {
-    while (page.num < 20) {
+    while (page.num < 21) {
         getPokemon(page.num);
         page.num++;
     }
