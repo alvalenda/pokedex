@@ -70,6 +70,18 @@ header h1 {
     margin: auto;
 }
 
+@media screen and (max-width: 720px) {
+    #cards {
+        max-width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        max-width: 60%;
+        min-width: 20rem;
+    }
+}
+
 li.card {
     background-color: cornsilk;
     border-radius: 15px;
