@@ -27,7 +27,7 @@ async function getPokemon(poke_number) {
         id: data.id,
         image: data.sprites['other']['official-artwork']['front_default'],
         type: types.join(' | '),
-        description: description.flavor_text_entries[0].flavor_text,
+        description: descriptionInEnglish(description.flavor_text_entries),
     };
 
     const html = `
@@ -49,6 +49,21 @@ async function getPokemon(poke_number) {
     `;
 
     document.querySelector('#cards').insertAdjacentHTML('beforeend', html);
+}
+
+/**
+ * @function descriptionInEnglish
+ * Searches for a description in English language   and returns the corresponding
+ * @param {object} description an object with a list of descriptions
+ * @returns a string containing the description in English language
+ */
+function descriptionInEnglish(description) {
+    // description.flavor_text_entries
+    console.log(description);
+    for (const text of description) {
+        if (text.language.name === 'en') return text.flavor_text;
+    }
+    return 'Description not found.';
 }
 
 /**
