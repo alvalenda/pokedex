@@ -45,7 +45,7 @@ async function getPokemons(pokeArray) {
         id: result.id,
         image: result.sprites['other']['official-artwork']['front_default'],
         types: result.types.map(type => type.type.name),
-        type: result.types.map(type => type.type.name).join('&nbsp&nbsp'),
+        type: result.types.map(type => type.type.name).join('&nbsp'),
         description: result.description,
     }));
 
@@ -61,7 +61,7 @@ function insertCardinHTML(pokemon) {
     for (const pokecard of pokemon) {
         const html = `
         <li class="card ${pokecard.types[0]}" onclick="selectPokemon(${pokecard.id})">
-            <div class="flip">
+            <div>
                 <img class="image" src=${pokecard.image} alt="imagem do ${pokecard.name}">
                 <div class="card-text">
                     <h2 class="card-title">${pokecard.id}. ${pokecard.name}</h2>
@@ -98,15 +98,65 @@ function descriptionInEnglish(description) {
 }
 
 async function selectPokemon(id) {
-    // console.log(id);
     const data = await fetch(url[0] + `${id}`).then(res => res.json());
     const description = await fetch(url[1] + `${id}`).then(res => res.json());
     data['description'] = descriptionInEnglish(description.flavor_text_entries);
     displayModal(data);
 }
 
-function displayModal(pokemodal) {
-    console.log(pokemodal);
+function displayModal(data) {
+    console.log(data);
+    const pokemon = {
+        name: data.name,
+        id: data.id,
+        image: data.sprites['other']['official-artwork']['front_default'],
+        types: data.types.map(type => type.type.name),
+        type: data.types.map(type => type.type.name).join('&nbsp'),
+        height: data.height,
+        weight: data.weight,
+        description: data.description,
+        hp: data.stats[0].base_stat,
+        attack: data.stats[1].base_stat,
+        defense: data.stats[2].base_stat,
+        specialattack: data.stats[3].base_stat,
+        specialdefense: data.stats[4].base_stat,
+        speed: data.stats[5].base_stat,
+    };
+    const html = `
+        <div class="modal">
+            <button id="close-button" onclick="closeModal()"> Close </button>
+            <div class="card ${pokemon.types[0]}">
+                <div class="modal-container-1">
+                    <h2 class="card-title">${pokemon.id}. ${pokemon.name}</h2>
+                    <img class="image" src=${pokemon.image} alt="imagem do ${pokemon.name}">
+                    <p class="modal-description">${pokemon.description}</p>
+                </div>
+                <div class="modal-container-2">
+                    
+                    <div>
+                        <h3> Type <p class="modal-types"> ${pokemon.type} </p></h3>
+                    </div>
+                    <div class="modal-stats">
+                        <p class="modal-stat">Hit Points <span> ${pokemon.hp} </span> </p>
+                        <p class="modal-stat">Height <span> ${pokemon.height} </span> </p>
+                        <p class="modal-stat">Weight <span> ${pokemon.weight} </span> </p>
+                        <p class="modal-stat">Attack <span> ${pokemon.attack} </span> </p>
+                        <p class="modal-stat">Defense <span> ${pokemon.defense} </span> </p>
+                        <p class="modal-stat">Special Attack <span> ${pokemon.specialattack} </span> </p>
+                        <p class="modal-stat">Special Defense <span> ${pokemon.specialdefense} </span> </p>
+                        <p class="modal-stat">Speed <span> ${pokemon.speed} </span> </p>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    `;
+    console.log(html);
+    pokedex.innerHTML = html + pokedex.innerHTML;
+}
+
+function closeModal() {
+    const modal = document.querySelector('.modal');
+    modal.parentElement.removeChild(modal);
 }
 
 // SECONDARY FUNCTIONS
