@@ -112,8 +112,6 @@ li.card:hover {
     50% {
         transform: translateY(0rem);
     }
-
-
 }
 
 /* Background Color Per Types*/
@@ -219,6 +217,191 @@ li.steel {
 .card-subtitle {
     font-weight: 300;
     color: #333;
+}
+/* MODAL */
+.modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+}
+
+.modal h2,
+.modal h3 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+.modal h3 {
+    display: flex;
+    flex-direction: row;
+    text-transform: capitalize;
+    justify-content: center;
+    align-items: center;
+
+    min-width: 25rem;
+}
+.modal-types {
+    padding-left: 1rem;
+}
+
+.modal-stats {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    min-height: 20rem;
+    min-width: 20rem;
+}
+
+.modal-stat {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 80%;
+    font-size: 1.5rem;
+}
+
+div.card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 50%;
+    min-height: 50%;
+    border-radius: 25px;
+    color: aliceblue;
+    text-shadow: 2px 2px 1.5px rgba(100, 45, 45, 1);
+    box-shadow: 3px 3px rgba(100, 45, 45, 0.3);
+}
+
+.modal-container-1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    max-width: 50%;
+    flex-grow: 1;
+    padding-left: 5rem;
+}
+
+.modal-description {
+    padding: 2rem;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.modal-container-2 {
+    max-width: 50%;
+    min-height: 80%;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding-right: 5rem;
+}
+
+#close-button {
+    position: absolute;
+    top: 28%;
+    right: 50% - 4rem;
+    width: 8rem;
+    height: 4rem;
+}
+
+#close-button:hover {
+    cursor: pointer;
+}
+
+button {
+    border: none;
+    /* padding: 10px 10px; */
+    background-color: cornsilk;
+    font-weight: 400;
+    font-size: 1.6rem;
+    color: rgb(140, 100, 75);
+    text-shadow: 1.5px 1.5px 1.5px rgba(100, 45, 45, 0.4);
+    box-shadow: 3px 3px rgba(100, 45, 45, 0.4);
+    border-radius: 5px;
+}
+
+button:hover{
+    animation: bounce 0.25s linear;
+}
+
+div.grass {
+    background-color: rgba(144, 211, 162, 0.95);
+}
+
+div.fire {
+    background-color: rgba(245, 173, 149, 0.95);
+}
+
+div.water {
+    background-color: rgba(106, 166, 230, 0.95);
+}
+
+div.ice {
+    background-color: rgba(129, 218, 218, 0.95);
+}
+
+div.bug {
+    background-color: rgba(0, 172, 14, 0.95);
+}
+
+div.poison {
+    background-color: rgba(154, 58, 179, 0.95);
+}
+
+div.ground {
+    background-color: rgba(206, 176, 152, 0.95);
+}
+
+div.fairy {
+    background-color: rgba(255, 91, 154, 0.95);
+}
+
+div.electric {
+    background-color: rgba(255, 234, 180, 0.95);
+}
+
+div.fighting {
+    background-color: rgba(235, 171, 126, 0.95);
+}
+
+div.rock {
+    background-color: rgba(100, 75, 100, 0.95);
+}
+
+div.ghost {
+    background-color: rgba(112, 88, 152, 0.95);
+}
+
+div.psychic {
+    background-color: rgba(255, 72, 127, 0.95);
+}
+
+div.dark {
+    background-color: rgba(136, 104, 148, 0.95);
+}
+
+div.dragon {
+    background-color: rgba(135, 93, 168, 0.95);
+}
+
+div.steel {
+    background-color: rgba(184, 184, 208, 0.95);
+}
+
+div.normal {
+    background-color: rgba(220, 200, 175, 0.95);
 }
 
 /* FOOTER */
