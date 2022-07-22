@@ -7,7 +7,10 @@
  */
 const page = { num: 1, tag: false };
 const pokedex = document.querySelector('#cards');
-
+const url = [
+    `https://pokeapi.co/api/v2/pokemon/`,
+    `https://pokeapi.co/api/v2/pokemon-species/`,
+];
 // FUNCTION THAT WILL BE CALLED TO INTERACT WITH THE API
 /**
  * @function getPokemons
@@ -20,15 +23,15 @@ async function getPokemons(pokeArray) {
 
     for (const pokeNumber of pokeArray) {
         data.push(
-            await fetch(`https://pokeapi.co/api/v2/pokemon/${pokeNumber}`).then(
-                response => response.json(),
+            await fetch(url[0] + `${pokeNumber}`).then(response =>
+                response.json(),
             ),
         );
 
         description.push(
-            await fetch(
-                `https://pokeapi.co/api/v2/pokemon-species/${pokeNumber}`,
-            ).then(response => response.json()),
+            await fetch(url[1] + `${pokeNumber}`).then(response =>
+                response.json(),
+            ),
         );
 
         // Adiciona description em Inglês no objeto data
@@ -57,7 +60,7 @@ async function getPokemons(pokeArray) {
 function insertCardinHTML(pokemon) {
     for (const pokecard of pokemon) {
         const html = `
-        <li class="card ${pokecard.types[0]}">
+        <li class="card ${pokecard.types[0]}" onclick="selectPokemon(${pokecard.id})">
             <div class="flip">
                 <img class="image" src=${pokecard.image} alt="imagem do ${pokecard.name}">
                 <div class="card-text">
@@ -92,6 +95,18 @@ function descriptionInEnglish(description) {
         }
     }
     return 'Description not found.';
+}
+
+async function selectPokemon(id) {
+    // console.log(id);
+    const data = await fetch(url[0] + `${id}`).then(res => res.json());
+    const description = await fetch(url[1] + `${id}`).then(res => res.json());
+    data['description'] = descriptionInEnglish(description.flavor_text_entries);
+    displayModal(data);
+}
+
+function displayModal(pokemodal) {
+    console.log(pokemodal);
 }
 
 // SECONDARY FUNCTIONS
