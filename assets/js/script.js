@@ -122,6 +122,14 @@ function displayModal(data) {
         specialdefense: data.stats[4].base_stat,
         speed: data.stats[5].base_stat,
     };
+
+    let htmlTypes = ` `;
+    for (const type of pokemon.types) {
+        htmlTypes += `
+            <p class="modal-type ${type}"> ${type} </p>
+        `;
+    }
+    console.log(pokemon.types, htmlTypes);
     const html = `
         <div class="modal">
             <button id="close-button" onclick="closeModal()"> Close </button>
@@ -134,7 +142,7 @@ function displayModal(data) {
                 <div class="modal-container-2">
                     
                     <div>
-                        <h3> Type <p class="modal-types"> ${pokemon.type} </p></h3>
+                        <h3 id="modal-types"> ${htmlTypes} </h3>
                     </div>
                     <div class="modal-stats">
                         <p class="modal-stat">Hit Points <span> ${pokemon.hp} </span> </p>
@@ -150,8 +158,10 @@ function displayModal(data) {
             </div>
         </div> 
     `;
-    console.log(html);
+
+    // console.log(html);
     pokedex.innerHTML = html + pokedex.innerHTML;
+
 }
 
 function closeModal() {
