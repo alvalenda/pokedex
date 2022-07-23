@@ -139,8 +139,7 @@ function displayModal(data) {
                     <p class="modal-description">${pokemon.description}</p>
                 </div>
                 <div class="modal-container-2">
-                    
-                    <div>
+                    <div id="div-types">
                         <h3 id="modal-types"> ${htmlTypes} </h3>
                     </div>
                     <div class="modal-stats">
