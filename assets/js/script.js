@@ -7,11 +7,10 @@
  */
 const page = { num: 1, tag: false };
 const pokedex = document.querySelector('#cards');
-const url = [
-    `https://pokeapi.co/api/v2/pokemon/`,
-    `https://pokeapi.co/api/v2/pokemon-species/`,
-];
-
+const url = {
+    data: `https://pokeapi.co/api/v2/pokemon/`,
+    desc: `https://pokeapi.co/api/v2/pokemon-species/`,
+};
 // FUNCTION THAT WILL BE CALLED TO INTERACT WITH THE API
 /**
  * @function getPokemons
@@ -24,13 +23,13 @@ async function getPokemons(pokeArray) {
 
     for (const pokeNumber of pokeArray) {
         data.push(
-            await fetch(url[0] + `${pokeNumber}`).then(response =>
+            await fetch(url.data + `${pokeNumber}`).then(response =>
                 response.json(),
             ),
         );
 
         description.push(
-            await fetch(url[1] + `${pokeNumber}`).then(response =>
+            await fetch(url.desc + `${pokeNumber}`).then(response =>
                 response.json(),
             ),
         );
@@ -99,8 +98,8 @@ function descriptionInEnglish(description) {
 }
 
 async function selectPokemon(id) {
-    const data = await fetch(url[0] + `${id}`).then(res => res.json());
-    const description = await fetch(url[1] + `${id}`).then(res => res.json());
+    const data = await fetch(url.data + `${id}`).then(res => res.json());
+    const description = await fetch(url.desc + `${id}`).then(res => res.json());
     data['description'] = descriptionInEnglish(description.flavor_text_entries);
     displayModal(data);
 }
