@@ -231,7 +231,7 @@ function viewMoreButton() {
 
 // FUNCTION pokeArray - create an array of number of pokemon ids
 const pokeArray = () =>
-    Array(50)
+    Array(25)
         .fill()
         .map(() => page.num++);
 
