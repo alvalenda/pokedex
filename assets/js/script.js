@@ -14,7 +14,7 @@ const url = {
 // FUNCTION THAT WILL BE CALLED TO INTERACT WITH THE API
 /**
  * @function getPokemons
- * description: Access pokemon API (pokeapi.co) to manipulate data and create the pokemon objects, then inject on html document
+ * description: Access pokemon API (pokeapi.co) to manipulate data and create the pokemon objects
  * @param {array} pokeArray an Array of 20 integer elements representing pokemon id's
  * @returns {Promise} Promise wrapping the array of pokemon objects
  */
@@ -40,6 +40,10 @@ async function getPokemons(pokeArray) {
         );
     }
 
+    return data;
+}
+
+function createObjectPokemon(data) {
     const pokemon = data.map(result => ({
         name: result.name,
         id: result.id,
@@ -60,7 +64,7 @@ async function getPokemons(pokeArray) {
 function insertCardinHTML(pokemon) {
     for (const pokecard of pokemon) {
         const html = `
-        <li class="card ${pokecard.types[0]}" onclick="selectPokemon(${pokecard.id})">
+        <li class="card ${pokecard.types[0]}" onclick="selectedPokemon(${pokecard.id})">
             <div>
                 <img class="image" src=${pokecard.image} alt="imagem do ${pokecard.name}">
                 <div class="card-text">
@@ -97,13 +101,23 @@ function descriptionInEnglish(description) {
     return 'Description not found.';
 }
 
-async function selectPokemon(id) {
+/**
+ * @function selectedPokemon
+ * description: Get data about the selected Pokemon and call the @displayModal function
+ * @param {number} id The corresponding id of the selected Pokemon
+ */
+async function selectedPokemon(id) {
     const data = await fetch(url.data + `${id}`).then(res => res.json());
     const description = await fetch(url.desc + `${id}`).then(res => res.json());
     data['description'] = descriptionInEnglish(description.flavor_text_entries);
     displayModal(data);
 }
 
+/**
+ * @function displayModal
+ * description: Creates a more descritive object from the selected Pokemon and insert the data into the html
+ * @param {object} data object containing all data about a Pokemon
+ */
 function displayModal(data) {
     const pokemon = {
         name: data.name,
@@ -160,12 +174,15 @@ function displayModal(data) {
     pokedex.innerHTML = html + pokedex.innerHTML;
 }
 
+/**
+ * @function closeModal
+ * description: Close the modal window remove the code from the html
+ */
 function closeModal() {
     const modal = document.querySelector('.modal');
     modal.parentElement.removeChild(modal);
 }
 
-// SECONDARY FUNCTIONS
 /**
  * @function viewMore
  * Call the function @getPokemons passing an array of pokemon id's. Has an internal interval controlled by the  @page .tag key.
@@ -210,6 +227,8 @@ function main() {
             .map(() => page.num++);
 
     getPokemonbyScroll(pokeArray);
-    getPokemons(pokeArray()).then(pokemon => insertCardinHTML(pokemon));
+    getPokemons(pokeArray())
+        .then(data => createObjectPokemon(data))
+        .then(pokemon => insertCardinHTML(pokemon));
 }
 main();
