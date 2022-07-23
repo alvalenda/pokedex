@@ -145,7 +145,7 @@ function displayModal(data) {
 
     const html = `
         <div class="modal" onclick="closeModal()">
-            <button id="close-button">X</button>
+        <button id="close-button">X</button>
             <div class="card ${pokemon.types[0]}">
                 <div class="modal-container-1">
                     <h2 class="card-title">${pokemon.id}. ${pokemon.name}</h2>
