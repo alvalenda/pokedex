@@ -253,6 +253,7 @@ div.card {
     min-height: 20rem;
     min-width: 20rem;
     margin-bottom: 2rem;
+    width: 70%;
 }
 
 .modal-stat {
@@ -494,7 +495,21 @@ footer section span {
         font-size: 1.4rem;
         line-height: 1.85rem;
     }
-    
+
+    .modal-stat {
+        width: 95%;
+    }
+
+    .modal-stats {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        min-height: 20rem;
+        margin-bottom: 2rem;
+        width: 100%;
+    }
+
     button{
         display: none;
     }
@@ -507,4 +522,42 @@ footer section span {
         padding: 0.2rem 1rem 0rem 1rem;
     }
 
+}
+
+@media screen and (max-width: 540px) {
+    div.card {
+        min-height: 50%;
+        max-width: 90%;
+    }
+
+    .modal h2, .modal h3 {
+        font-size: 2rem;
+        padding: 0rem 1rem 0rem 1rem;
+    }
+
+    .modal-container-1 img {
+        width: 13rem;
+    }
+    .modal-description {
+        padding: 0.5rem 1rem 0.5rem 1rem;
+        margin: 0rem 1rem 1rem 1rem;
+        font-size: 1.2rem;
+        line-height: 1.7rem;
+    }
+
+    .modal-stats {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        min-height: 20rem;
+        min-width: 20rem;
+        margin-bottom: 2rem;
+    }
+    
+    .modal-stat {
+        width: 85%;
+        font-size: 1.3rem;
+        
+    }
 }
