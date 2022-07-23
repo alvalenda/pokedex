@@ -11,6 +11,7 @@ const url = [
     `https://pokeapi.co/api/v2/pokemon/`,
     `https://pokeapi.co/api/v2/pokemon-species/`,
 ];
+
 // FUNCTION THAT WILL BE CALLED TO INTERACT WITH THE API
 /**
  * @function getPokemons
@@ -45,7 +46,7 @@ async function getPokemons(pokeArray) {
         id: result.id,
         image: result.sprites['other']['official-artwork']['front_default'],
         types: result.types.map(type => type.type.name),
-        type: result.types.map(type => type.type.name).join('&nbsp'),
+        type: result.types.map(type => type.type.name).join('&nbsp|&nbsp'),
         description: result.description,
     }));
 
@@ -130,7 +131,7 @@ function displayModal(data) {
     }
 
     const html = `
-        <div class="modal">
+        <div class="modal" onclick="closeModal()">
             <button id="close-button" onclick="closeModal()">X</button>
             <div class="card ${pokemon.types[0]}">
                 <div class="modal-container-1">
