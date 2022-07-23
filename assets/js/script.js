@@ -145,7 +145,7 @@ function displayModal(data) {
 
     const html = `
         <div class="modal" onclick="closeModal()">
-            <button id="close-button" onclick="closeModal()">X</button>
+            <button id="close-button">X</button>
             <div class="card ${pokemon.types[0]}">
                 <div class="modal-container-1">
                     <h2 class="card-title">${pokemon.id}. ${pokemon.name}</h2>
@@ -191,7 +191,9 @@ function closeModal() {
 function viewMore(pokeArray) {
     if (page.tag === true) return;
     page.tag = true;
-    getPokemons(pokeArray()).then(pokemon => insertCardinHTML(pokemon));
+    getPokemons(pokeArray())
+        .then(data => createObjectPokemon(data))
+        .then(pokemon => insertCardinHTML(pokemon));
 
     setTimeout(() => {
         page.tag = false;
