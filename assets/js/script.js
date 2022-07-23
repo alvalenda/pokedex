@@ -131,7 +131,7 @@ function displayModal(data) {
 
     const html = `
         <div class="modal">
-            <button id="close-button" onclick="closeModal()"> Close </button>
+            <button id="close-button" onclick="closeModal()">X</button>
             <div class="card ${pokemon.types[0]}">
                 <div class="modal-container-1">
                     <h2 class="card-title">${pokemon.id}. ${pokemon.name}</h2>
@@ -191,7 +191,7 @@ function getPokemonbyScroll(pokeArray) {
         const { scrollTop, scrollHeight, clientHeight } =
             document.documentElement;
 
-        if (scrollTop + clientHeight >= scrollHeight - 350) {
+        if (scrollTop + clientHeight >= scrollHeight - 300) {
             if (page.tag === true) return;
             viewMore(pokeArray);
         }
