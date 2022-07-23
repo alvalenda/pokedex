@@ -258,6 +258,10 @@ div.card {
     padding-left: 5rem;
 }
 
+.modal-container-1 img {
+    width: 18rem;
+}
+
 .modal-description {
     padding: 1.5rem;
     margin-bottom: 1rem;
@@ -281,23 +285,28 @@ div.card {
     padding-right: 5rem;
 }
 
+#div-types {
+    display: flex;
+    justify-content: center;
+}
+
 
 .modal h2,
 .modal h3 {
     font-size: 2.5rem;
-    margin: 1rem 0rem 2rem 0rem;
     font-weight: 500;
 }
 
 .modal h2 {
     font-size: 3rem;
+    margin: 1.5rem 0rem 0rem 0rem;
     padding: 0 2rem 0 2rem;
     border-radius: 25px;
     background-color: rgba(255, 255, 255, 0.4);
 }
 
 .modal h3 {
-    margin-top: 2.5rem;
+    /* padding-top: 1rem; */
     display: flex;
     flex-direction: row;
     text-transform: capitalize;
@@ -306,8 +315,8 @@ div.card {
     min-width: 25rem;
 }
 .modal-type {
-    padding: 0rem 1rem 0rem 1rem;
-    margin: 0rem 0rem 0rem 1rem;
+    padding: 0.25rem 1.25rem 0.25rem 1.25rem;
+    margin: 0.5rem 0rem 0rem 1rem;
     text-align: center;
     background-color: rgba(255, 255, 255, 0.4);
     border-radius: 35px;
