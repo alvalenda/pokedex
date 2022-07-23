@@ -7,6 +7,7 @@
  */
 const page = { num: 1, tag: false };
 const pokedex = document.querySelector('#cards');
+const vmbutton = document.querySelector('#viewmore-button');
 const url = {
     data: `https://pokeapi.co/api/v2/pokemon/`,
     desc: `https://pokeapi.co/api/v2/pokemon-species/`,
@@ -145,7 +146,6 @@ function displayModal(data) {
 
     const html = `
         <div class="modal" onclick="closeModal()">
-        <button id="close-button">X</button>
             <div class="card ${pokemon.types[0]}">
                 <div class="modal-container-1">
                     <h2 class="card-title">${pokemon.id}. ${pokemon.name}</h2>
@@ -188,7 +188,7 @@ function closeModal() {
  * Call the function @getPokemons passing an array of pokemon id's. Has an internal interval controlled by the  @page .tag key.
  * @param {array} pokeArray an Array of 20 integer elements representing pokemon id's
  */
-function viewMore(pokeArray) {
+function viewMore() {
     if (page.tag === true) return;
     page.tag = true;
     getPokemons(pokeArray())
@@ -205,7 +205,7 @@ function viewMore(pokeArray) {
  * Starts an EventListener that will call @viewMore when the user scrolls down the page.
  * @param {array} pokeArray an Array of 20 integer elements representing pokemon id's
  */
-function getPokemonbyScroll(pokeArray) {
+function getPokemonbyScroll() {
     window.addEventListener('scroll', () => {
         const { scrollTop, scrollHeight, clientHeight } =
             document.documentElement;
@@ -217,18 +217,30 @@ function getPokemonbyScroll(pokeArray) {
     });
 }
 
+function viewMoreButton() {
+    getPokemons(pokeArray())
+        .then(data => createObjectPokemon(data))
+        .then(pokemon => insertCardinHTML(pokemon));
+
+    vmbutton.style.display = 'none';
+
+    setTimeout(() => {
+        getPokemonbyScroll();
+    }, 2000);
+}
+
+// FUNCTION pokeArray - create an array of number of pokemon ids
+const pokeArray = () =>
+    Array(50)
+        .fill()
+        .map(() => page.num++);
+
 // MAIN FUNCTION
 /**
  * @function main
  * description: Creates and controlls pokearray, starts @getPokemonbyScroll and calls @getPokemons
  */
 function main() {
-    const pokeArray = () =>
-        Array(20)
-            .fill()
-            .map(() => page.num++);
-
-    getPokemonbyScroll(pokeArray);
     getPokemons(pokeArray())
         .then(data => createObjectPokemon(data))
         .then(pokemon => insertCardinHTML(pokemon));
