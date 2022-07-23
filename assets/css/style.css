@@ -349,7 +349,7 @@ div.card {
 #close-button {
     position: absolute;
     top: 26%;
-    right: 5%;
+    right: 10%;
     width: 2.5rem;
     height: 2rem;
 }
