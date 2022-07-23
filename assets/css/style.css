@@ -348,10 +348,10 @@ div.card {
 
 #close-button {
     position: absolute;
-    top: 28%;
-    right: 50% - 4rem;
-    width: 8rem;
-    height: 4rem;
+    top: 26%;
+    right: 3%;
+    width: 2.5rem;
+    height: 2rem;
 }
 
 #close-button:hover {
