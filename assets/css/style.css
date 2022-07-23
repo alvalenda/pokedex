@@ -367,67 +367,67 @@ button:hover{
 }
 
 div.grass {
-    background-color: rgba(216,226,182, 0.98);
+    background-color: rgba(216,226,182, 1);
 }
 
 div.fire {
-    background-color: rgba(245, 173, 149, 0.98);
+    background-color: rgba(245, 173, 149, 1);
 }
 
 div.water {
-    background-color: rgba(162,193,223, 0.95);
+    background-color: rgba(162,193,223, 1);
 }
 
 div.ice {
-    background-color: rgba(129, 218, 218, 0.95);
+    background-color: rgba(178,232,214, 1);
 }
 
 div.bug {
-    background-color: rgba(204,217,159, 0.98);
+    background-color: rgba(204,217,159, 1);
 }
 
 div.poison {
-    background-color: rgba(219,183,208, 0.99);
+    background-color: rgba(219,183,208, 1);
 }
 
 div.ground {
-    background-color: rgba(232,197,160, 0.99);
+    background-color: rgba(232,197,160, 1);
 }
 
 div.fairy {
-    background-color: rgba(255, 91, 154, 0.95);
+    background-color: rgba(255,201,188, 1);
 }
 
 div.electric {
-    background-color: rgba(255, 234, 180, 0.99);
+    background-color: rgba(255, 234, 180, 1);
 }
 
 div.fighting {
-    background-color: rgba(235, 171, 126, 0.95);
+    background-color: rgba(249,188,137, 1);
 }
 
 div.rock {
-    background-color: rgba(100, 75, 100, 0.95);
+    background-color: rgba(224,198,177, 1);
 }
 
 div.ghost {
-    background-color: rgba(112, 88, 152, 0.95);
+    background-color: rgba(183,157,173, 1);
 }
 
 div.psychic {
-    background-color: rgba(255, 72, 127, 0.95);
+    background-color: rgba(252,172,172, 1);
 }
 
 div.dark {
-    background-color: rgba(136, 104, 148, 0.95);
+    background-color: rgba(178,159,182, 1);
 }
 
 div.dragon {
-    background-color: rgba(135, 93, 168, 0.95);
+    background-color: rgba(178,164,214, 1);
 }
 
 div.steel {
-    background-color: rgba(184, 184, 208, 0.95);
+    background-color: rgba(191,188,206, 1);
 }
 
 div.normal {
