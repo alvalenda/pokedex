@@ -105,7 +105,6 @@ async function selectPokemon(id) {
 }
 
 function displayModal(data) {
-    console.log(data);
     const pokemon = {
         name: data.name,
         id: data.id,
@@ -129,7 +128,7 @@ function displayModal(data) {
             <p class="modal-type ${type}"> ${type} </p>
         `;
     }
-    console.log(pokemon.types, htmlTypes);
+
     const html = `
         <div class="modal">
             <button id="close-button" onclick="closeModal()"> Close </button>
@@ -159,9 +158,7 @@ function displayModal(data) {
         </div> 
     `;
 
-    // console.log(html);
     pokedex.innerHTML = html + pokedex.innerHTML;
-
 }
 
 function closeModal() {
