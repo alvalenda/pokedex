@@ -61,6 +61,12 @@ header h1 {
     gap: 1rem;
 }
 
+/*MAIN  */
+main{
+    padding-bottom: 4rem;
+}
+
+/* CARDS */
 #cards {
     padding-top: 4rem;
     max-width: 90%;
@@ -160,6 +166,7 @@ div.card {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    margin: 0 auto;
     min-width: 50%;
     min-height: 50%;
     border-radius: 25px;
@@ -267,7 +274,7 @@ div.card {
     
 }
 
-#close-button {
+/* #close-button {
     position: absolute;
     top: 26%;
     right: 10%;
@@ -277,24 +284,40 @@ div.card {
 
 #close-button:hover {
     cursor: pointer;
+} */
+
+#viewmore-button{
+    position: relative;
+    margin: 0 auto;
+    margin-top: 2rem;
+    display:block;
+    width: 10rem;
+    height: 4rem;
+}
+
+#viewmore-button:hover {
+    cursor: pointer;
 }
 
 button {
     border: none;
     /* padding: 10px 10px; */
-    background-color: rgba(255, 255, 255, 0.4);
-    font-weight: 500;
+    background-color: rgba(255, 255, 255, 0.7);
+    font-weight: 400;
     font-size: 1.6rem;
-    color: rgb(255, 255, 255);
-    /* text-shadow: 2.5px 2px 0px rgba(87, 60, 60, 0.55); */
-    text-shadow: 2px 2px 1px rgba(100, 45, 45, 0.6);
+    color: rgba(100, 45, 45, 0.9);
     box-shadow: 3px 3px rgba(100, 45, 45, 0.4);
     border-radius: 5px;
 }
 
 button:hover{
-    background-color: rgba(255, 255, 255, 0.2);
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(100, 45, 45, 0.9);
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+button:active{
+    color: rgba(100, 45, 45, 0.8);
+    box-shadow: -3px -3px rgba(100, 45, 45, 0.4)
 }
 
 /* BACKGROUND CARDS AND MODAL-CARDS BY TYPE COLOR*/
@@ -421,7 +444,7 @@ footer section span {
 /* width 1007px */
 
 /* width 640px */
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 760px) {
     #cards {
         max-width: 100%;
         display: flex;
