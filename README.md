@@ -1,7 +1,8 @@
 # Pokédex
-(Deploy github pages)[https://alvalenda.github.io/pokedex/]
+[Deploy github pages](https://alvalenda.github.io/pokedex/)
 
 ## Functions
+
 `pokeArray`: Creates an array of integers representing pokemon id's
 
 `getPokemons`: Access pokemon API (pokeapi.co) to manipulate data and create the pokemon objects.
@@ -36,12 +37,15 @@
 `main`: Call @getPokemons initializing the page.
 
 ## Global Variables
+
 `page`: Controlls the number of pokemon created and the internal interval from the API calls. 
     * `page.num`: Acumulates a number representing the pokemon id
     * `page.tag`: Controls the internal cooldown of @viewMore
 
 `pokedex`: Contains a selected html document element. 
+
 `vmbutton`: Contains a selected html document element.
+
 `url`: Contains two url's adressing to the data and description sources.
 
 ---
