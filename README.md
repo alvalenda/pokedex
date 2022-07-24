@@ -50,6 +50,6 @@
 
 ---
 
-Language: JavaScript
-Technologies: HTML, CSS
-Workload: 20 hours
+Language: JavaScript  
+Technologies: HTML, CSS  
+Workload: 20 hours  
