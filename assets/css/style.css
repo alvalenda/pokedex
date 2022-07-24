@@ -555,7 +555,7 @@ footer section span {
 
 }
 
-@media screen and (max-width: 540px) {
+@media screen and (max-width: 620px) {
     div.card {
         min-height: 50%;
         max-width: 90%;
