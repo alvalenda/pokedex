@@ -190,7 +190,7 @@ div.card {
     border-radius: 25px;
     color: rgb(255, 255, 255);
     /* color: rgba(0, 0, 0, 1); */
-    text-shadow: 2px 2px 1px rgba(100, 45, 45, 0.6);
+    text-shadow: 1.2px 1.2px 1px rgba(100, 45, 45, 0.8);
     box-shadow: 3px 3px rgba(100, 45, 45, 0.3);
 }
 
@@ -207,8 +207,7 @@ div.card {
 }
 
 .modal-image {
-    margin: 0 12.5%;
-    margin: 0.5rem 0 0.5rem 0;
+    margin: 1rem 0 1rem 0;
     display: block;
     background-color: rgba(255,255,255,0.3);
     border-radius: 50%;
@@ -216,7 +215,7 @@ div.card {
 
 .modal-container-1 img {
     width: 18rem;
-    margin: 0.5rem 0 0.5rem 0;
+    margin: 0;
 }
 
 .modal-description {
@@ -415,6 +414,9 @@ div.steel {
     background-color: rgba(191,188,206, 1);
 }
 
+li.normal {
+    background-color: rgb(240, 210, 180);
+}
 div.normal {
     background-color: rgba(240,213,181, 1);
 }
@@ -469,6 +471,10 @@ footer section span {
         min-width: 20rem;
     }
 
+    div .card{
+        text-shadow: 1.2px 1.2px 1px rgba(100, 45, 45, 0.8);
+    }
+
     .modal {
         display: flex;
         flex-direction: row;
@@ -513,6 +519,10 @@ footer section span {
         padding-left: 0rem;
     }
 
+    .modal-image {
+        margin: 0.5rem 0 0.5rem 0;
+    }
+
     .modal-container-1 img {
         width: 15rem;
     }
@@ -524,8 +534,8 @@ footer section span {
     }
 
     .modal-type {
-        padding: 0.2rem 0.75rem 0.2 0.75rem;
-        margin: 0rem 0rem 0rem 1rem;
+        padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+        margin: 0rem 0rem 0rem 0.5rem;
         /* text-align: center; */
     }
     
@@ -595,7 +605,7 @@ footer section span {
     .modal-stats {
         justify-content: space-around;
         align-items: center;
-        min-height: 17rem;
+        min-height: 16rem;
         margin: 0.25rem 0 1.5rem 0;
     }
     
