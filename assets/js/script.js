@@ -95,7 +95,7 @@ function descriptionInEnglish(description) {
         if (text.language.name === 'en') {
             const flavor_text = text.flavor_text
                 .replace('\u000c', ' ')
-                .replace('POKéMON', 'POKÉMON');
+                .replace('é', 'É');
             return flavor_text;
         }
     }
