@@ -26,7 +26,7 @@
 `displayModal`: Creates a more descritive object from a selected Pokemon and insert the data into the html.
  * @param {object} `data` An object containing a single Pokemon data
 
-`displayModal`: Close the modal window. Remos the code from the html.
+`closeModal`: Removes modal element from the html document.
 
 `viewMore`: Call the function @getPokemons passing an array of pokemon id's. Has an internal interval controlled by the @page.tag.
 
