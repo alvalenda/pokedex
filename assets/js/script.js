@@ -82,8 +82,7 @@ function insertCardinHTML(pokemon) {
                         <h3>Type</h3>
                         <p class="card-subtitle">${pokecard.type}</p>
                     </div>
-                    <h3>Description</h3>
-                        <p class="card-subtitle">${pokecard.description}</p>
+                        <p class="card-subtitle card-description">${pokecard.description}</p>
                 </div>
             </div>
         </li>
