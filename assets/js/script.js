@@ -102,7 +102,7 @@ function descriptionInEnglish(description) {
         if (text.language.name === 'en') {
             const flavor_text = text.flavor_text
                 .replace('\u000c', ' ')
-                .replace('Ké', 'kÉ');
+                .replace('Ké', 'KÉ');
             return flavor_text;
         }
     }
