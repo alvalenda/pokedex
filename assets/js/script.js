@@ -67,7 +67,9 @@ function insertCardinHTML(pokemon) {
         const html = `
         <li class="card ${pokecard.types[0]}" onclick="selectedPokemon(${pokecard.id})">
             <div>
-                <img class="image" src=${pokecard.image} alt="imagem do ${pokecard.name}">
+                <div class="div-image">
+                <img src=${pokecard.image} alt="imagem do ${pokecard.name}">
+                </div>
                 <div class="card-text">
                     <h2 class="card-title">${pokecard.id}. ${pokecard.name}</h2>
                     <div class="card-type">
@@ -149,7 +151,9 @@ function displayModal(data) {
             <div class="card ${pokemon.types[0]}">
                 <div class="modal-container-1">
                     <h2 class="card-title">${pokemon.id}. ${pokemon.name}</h2>
-                    <img class="image" src=${pokemon.image} alt="imagem do ${pokemon.name}">
+                    <div class="modal-image">
+                        <img src=${pokemon.image} alt="${pokemon.name} image">
+                    </div>
                     <p class="modal-description">${pokemon.description}</p>
                 </div>
                 <div class="modal-container-2">
