@@ -445,7 +445,7 @@ footer section span {
 /* width 1007px */
 
 /* width 640px */
-@media screen and (max-width: 760px) {
+@media screen and (max-width: 768px) {
     #cards {
         max-width: 100%;
         display: flex;
@@ -495,7 +495,7 @@ footer section span {
 
     .modal-container-1 {
         height: 50%;
-        width: 75%;
+        width: 90%;
         padding-left: 0rem;
     }
 
@@ -504,13 +504,13 @@ footer section span {
     }
 
     .modal-container-2 {
-        width: 50%;
         height: 50%;
+        width: 90%;
         padding: 0rem 0 0rem 0;
     }
 
     .modal-type {
-        padding: 0.25rem 1.25rem 0.25rem 1.25rem;
+        padding: 0.25rem 1rem 0.25rem 1rem;
         margin: 0rem 0rem 0rem 1rem;
         text-align: center;
         background-color: rgba(255, 255, 255, 0.4);
@@ -518,8 +518,8 @@ footer section span {
     }
     
     .modal-description {
-        padding: 1rem;
-        margin: 0rem 1rem 1rem 1rem;
+        padding: 0.25rem 0.5rem 0.25rem 0.5rem;
+        margin: 0rem 0.75rem 0.75rem 0.75rem;
         font-size: 1.3rem;
         line-height: 1.85rem;
         width: 100%;
@@ -555,29 +555,31 @@ footer section span {
 
 }
 
-@media screen and (max-width: 620px) {
+@media screen and (max-width: 540px) {
     div.card {
         min-height: 50%;
         max-width: 90%;
     }
 
     .modal h2, .modal h3 {
-        font-size: 1.8rem;
-        padding: 0rem 1rem 0rem 1rem;
+        font-size: 1.6rem;
+        padding: 0rem 0.75rem 0rem 0.75rem;
     }
 
     .modal h3 {
-        font-size: 1.6rem;
+        font-size: 1.4rem;
     }
 
     .modal-container-1 img {
         width: 12rem;
     }
     .modal-description {
-        padding: 0.5rem 1rem 0.5rem 1rem;
+        padding: 0.25rem 0.5rem 0.25rem 0.5rem;
         margin: 0rem 1rem 1rem 1rem;
         font-size: 1.2rem;
         line-height: 1.5rem;
+        width: 100%;
+        height: 100%;
     }
 
     .modal-stats {
