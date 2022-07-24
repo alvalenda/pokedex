@@ -112,7 +112,7 @@ li.card:hover {
 .div-image {
     margin: 0 12.5%;
     display: block;
-    background-color: rgba(255,255,255,0.3);
+    background-color: rgba(255,255,255,0.2);
     border-radius: 50%;
 }
 
@@ -136,7 +136,7 @@ li.card:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0.5rem 3rem 0.4rem 3rem;
+    padding: 0.4rem 3rem 0.4rem 3rem;
     text-transform: capitalize;
 }
 
@@ -146,6 +146,7 @@ li.card:hover {
 }
 
 .card-title {
+    margin-top: 0.5rem;
     text-transform: uppercase;
     font-size: 2rem;
     font-weight: normal;
@@ -154,6 +155,15 @@ li.card:hover {
 .card-subtitle {
     font-weight: 300;
     color: #333;
+}
+
+.card-description {
+    background-color: rgba(255,255,255,0.2);
+    border-radius: 15px;
+    padding: 0.8rem;
+    width: 84%;
+    margin: auto;
+    margin-top: 0.4rem;
 }
 
 /* MODAL */
@@ -365,7 +375,7 @@ div.fairy {
     background-color: rgba(255,201,188, 1);
 }
 
-li.eletric,
+li.electric,
 div.electric {
     background-color: rgba(255, 234, 180, 1);
 }
