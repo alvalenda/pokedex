@@ -185,7 +185,7 @@ function displayModal(data) {
 
 /**
  * @function closeModal
- * description: Close the modal window remove the code from the html
+ * description: Removes modal element from the html document.
  */
 function closeModal() {
     const modal = document.querySelector('.modal');
@@ -249,7 +249,7 @@ const pokeArray = () =>
         .fill()
         .map(() => page.num++);
 
-// MAIN FUNCTION
+
 /**
  * @function main
  * description: Call @getPokemons initializing the page.
