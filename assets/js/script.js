@@ -12,11 +12,11 @@ const url = {
     data: `https://pokeapi.co/api/v2/pokemon/`,
     desc: `https://pokeapi.co/api/v2/pokemon-species/`,
 };
-// FUNCTION THAT WILL BE CALLED TO INTERACT WITH THE API
+
 /**
  * @function getPokemons
  * description: Access pokemon API (pokeapi.co) to manipulate data and create the pokemon objects
- * @param {array} pokeArray an Array of 20 integer elements representing pokemon id's
+ * @param {array} pokeArray an Array of integer elements representing pokemon id's
  * @returns {Promise} Promise wrapping the array of pokemon objects
  */
 async function getPokemons(pokeArray) {
@@ -44,6 +44,12 @@ async function getPokemons(pokeArray) {
     return data;
 }
 
+/**
+ * @function createObjectPokemon
+ * description: Transform the raw data into pokemon object of selected data. 
+ * @param {object} data Object containing pokemon raw data
+ * @returns {promise} Promise wrapping a pokemon selected data object
+ */
 function createObjectPokemon(data) {
     const pokemon = data.map(result => ({
         name: result.name,
@@ -106,7 +112,7 @@ function descriptionInEnglish(description) {
 
 /**
  * @function selectedPokemon
- * description: Get data about the selected Pokemon and call the @displayModal function
+ * description: Get a Pokemon data and call the @displayModal function.
  * @param {number} id The corresponding id of the selected Pokemon
  */
 async function selectedPokemon(id) {
@@ -119,7 +125,7 @@ async function selectedPokemon(id) {
 /**
  * @function displayModal
  * description: Creates a more descritive object from the selected Pokemon and insert the data into the html
- * @param {object} data object containing all data about a Pokemon
+ * @param {object} data An object containing a single Pokemon data
  */
 function displayModal(data) {
     const pokemon = {
@@ -190,7 +196,6 @@ function closeModal() {
 /**
  * @function viewMore
  * Call the function @getPokemons passing an array of pokemon id's. Has an internal interval controlled by the  @page .tag key.
- * @param {array} pokeArray an Array of 20 integer elements representing pokemon id's
  */
 function viewMore() {
     if (page.tag === true) return;
@@ -207,7 +212,6 @@ function viewMore() {
 /**
  * @function getPokemonbyScroll
  * Starts an EventListener that will call @viewMore when the user scrolls down the page.
- * @param {array} pokeArray an Array of 20 integer elements representing pokemon id's
  */
 function getPokemonbyScroll() {
     window.addEventListener('scroll', () => {
@@ -221,6 +225,10 @@ function getPokemonbyScroll() {
     });
 }
 
+/**
+ * @function viewMoreButton
+ * description: Get data from more Pokemon and starts the @getPokemonbyScroll event listener.
+ */
 function viewMoreButton() {
     getPokemons(pokeArray())
         .then(data => createObjectPokemon(data))
@@ -233,7 +241,10 @@ function viewMoreButton() {
     }, 2000);
 }
 
-// FUNCTION pokeArray - create an array of number of pokemon ids
+/**
+ * @function pokeArray
+ * description: Creates an array of integers representing pokemon id's
+ */
 const pokeArray = () =>
     Array(25)
         .fill()
@@ -242,7 +253,7 @@ const pokeArray = () =>
 // MAIN FUNCTION
 /**
  * @function main
- * description: Creates and controlls pokearray, starts @getPokemonbyScroll and calls @getPokemons
+ * description: Call @getPokemons initializing the page.
  */
 function main() {
     getPokemons(pokeArray())

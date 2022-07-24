@@ -1,1 +1,3 @@
-# pokedex
+# Pokédex
+
+## Functions
