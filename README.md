@@ -1,5 +1,5 @@
 # Pokédex
-[Deploy github pages](https://alvalenda.github.io/pokedex/)
+[Deploy in github-pages](https://alvalenda.github.io/pokedex/)
 
 ## Functions
 
