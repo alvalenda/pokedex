@@ -227,7 +227,7 @@ div.card {
     font-weight: 400;
     font-size: 1.6rem;
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.3);
     border-radius: 35px;
 
 }
@@ -260,7 +260,7 @@ div.card {
     margin: 1.5rem 0rem 0rem 0rem;
     padding: 0 2rem 0 2rem;
     border-radius: 25px;
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.3);
     text-align: center;
 }
 
@@ -276,7 +276,7 @@ div.card {
     padding: 0.1rem 1rem 0.1rem 1rem;
     margin: 0.5rem 0rem 0rem 1rem;
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.3);
     border-radius: 35px;
 }
 
@@ -379,7 +379,8 @@ div.fairy {
 
 li.electric,
 div.electric {
-    background-color: rgba(255, 234, 180, 1);
+    /* background-color: rgba(255, 234, 180, 1); */
+    background-color: rgba(250, 230, 140, 1);
 }
 
 li.fighting,
