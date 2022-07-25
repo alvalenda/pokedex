@@ -15,7 +15,7 @@ const url = {
 
 /**
  * @function getPokemons
- * description: Access pokemon API (pokeapi.co) to manipulate data and create the pokemon objects
+ * description: Access pokemon API (pokeapi.co) to get the pokemon raw data.
  * @param {array} pokeArray an Array of integer elements representing pokemon id's
  * @returns {Promise} Promise wrapping the array of pokemon objects
  */
@@ -46,7 +46,7 @@ async function getPokemons(pokeArray) {
 
 /**
  * @function createObjectPokemon
- * description: Transform the raw data into pokemon object of selected data. 
+ * description: Transform the raw data into pokemon object.
  * @param {object} data Object containing pokemon raw data
  * @returns {promise} Promise wrapping a pokemon selected data object
  */
@@ -65,7 +65,7 @@ function createObjectPokemon(data) {
 
 /**
  * @function insertCardinHTML
- * description: Inject a list of pokemon into a html document
+ * description: Inject a list of pokemon into a html document.
  * @param {object:array} pokemon an array of pokemon objects to insert into the html document
  */
 function insertCardinHTML(pokemon) {
@@ -93,7 +93,7 @@ function insertCardinHTML(pokemon) {
 
 /**
  * @function descriptionInEnglish
- * Searches for a description in English language and returns the corresponding string
+ * Searches for a description in English language and returns the corresponding string.
  * @param {object} description an object with an Array of descriptions strings
  * @returns a string containing the description in English language
  */
@@ -123,7 +123,7 @@ async function selectedPokemon(id) {
 
 /**
  * @function displayModal
- * description: Creates a more descritive object from the selected Pokemon and insert the data into the html
+ * description: Creates a more descritive object from the selected Pokemon and insert the data into the html.
  * @param {object} data An object containing a single Pokemon data
  */
 function displayModal(data) {
@@ -242,7 +242,7 @@ function viewMoreButton() {
 
 /**
  * @function pokeArray
- * description: Creates an array of integers representing pokemon id's
+ * description: Creates an array of integers representing pokemon id's. Auto increment array values.
  */
 const pokeArray = () =>
     Array(25)
