@@ -3,7 +3,7 @@
 
 ## Functions
 
-`pokeArray`: Creates an array of integers representing pokemon id's. Auto increment array value's.
+`pokeArray`: Creates an array of integers representing pokemon id's. Auto increment array values.
 
 `getPokemons`: Access pokemon API (pokeapi.co) to get the pokemon raw data.
  * @param {array} `pokeArray` an Array of integer elements  representing pokemon id's
