@@ -259,17 +259,13 @@ function scrollEventListener(scroll) {
         if (scroll.tag === false) {
             scroll.tag = true;
 
-            console.log(scroll.scrollY, window.scrollY);
             if (scroll.scrollY != window.scrollY) {
-                console.log('MOVEU!');
-                console.log(scroll.scrollY, window.scrollY);
                 scroll.scrollY = window.scrollY;
                 hideandShowElement();
             }
 
             setTimeout(() => {
                 scroll.tag = false;
-                console.log(scroll.tag);
             }, 5000);
         }
     });
