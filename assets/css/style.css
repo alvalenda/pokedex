@@ -44,6 +44,7 @@ header {
     left: 0;
     background-color: rgba(100, 45, 45, 0.8);
     border-bottom: 2px solid rgba(100, 45, 45, 0.2);
+    transition: all 1s ease-in-out;
 }
 
 @supports ((-webkit-backdrop-filter: none;) or (backdrop-filter: none)) {
@@ -430,6 +431,12 @@ footer {
     left: 0;
     background-color: rgba(100, 45, 45, 0.8);
     border-top: 2px solid rgba(100, 45, 45, 0.2);
+    transition: all 1s ease-in-out;
+}
+
+.hide {
+    visibility: hidden;
+    opacity: 0;
 }
 
 @supports ((-webkit-backdrop-filter: none;) or (backdrop-filter: none)) {
