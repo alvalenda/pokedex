@@ -1,17 +1,26 @@
-/**
- * Global Variable
- * page.num: Acumulates a number representing the pokemon id
- * page.tag: Controls the internal cooldown of @viewMore
- * value: true  => @viewMore disabled
- * value: false => @viewMore enabled
- */
+/* ---------------- GLOBAL VARIABLES ------------------------- */
+
 const page = { num: 1, tag: false };
+const scroll = { scrollY: window.scrollY, tag: false };
 const pokedex = document.querySelector('#cards');
 const vmbutton = document.querySelector('#viewmore-button');
+const header = document.querySelector('#header-container');
+const footer = document.querySelector('#footer-container');
 const url = {
     data: `https://pokeapi.co/api/v2/pokemon/`,
     desc: `https://pokeapi.co/api/v2/pokemon-species/`,
 };
+
+/*  ---------------- FUNCTIONS ------------------------------ */
+
+/**
+ * @function pokeArray
+ * description: Creates an array of integers representing pokemon id's. Auto increment array values.
+ */
+const pokeArray = () =>
+    Array(25)
+        .fill()
+        .map(() => page.num++);
 
 /**
  * @function getPokemons
@@ -241,22 +250,60 @@ function viewMoreButton() {
 }
 
 /**
- * @function pokeArray
- * description: Creates an array of integers representing pokemon id's. Auto increment array values.
+ * @function scrollEventListener
+ * description: If the user scrolls down the page, the event listener will call @hideandShowElement funtion.
+ * @param {object} scroll Object containing the two keys: scroll.scollY store the position Y of the scroll; scroll.tag store a boolean value that indicates controlls an internal interval.
  */
-const pokeArray = () =>
-    Array(25)
-        .fill()
-        .map(() => page.num++);
+function scrollEventListener(scroll) {
+    window.addEventListener('scroll', function () {
+        if (scroll.tag === false) {
+            scroll.tag = true;
 
+            console.log(scroll.scrollY, window.scrollY);
+            if (scroll.scrollY != window.scrollY) {
+                console.log('MOVEU!');
+                console.log(scroll.scrollY, window.scrollY);
+                scroll.scrollY = window.scrollY;
+                hideandShowElement();
+            }
+
+            setTimeout(() => {
+                scroll.tag = false;
+                console.log(scroll.tag);
+            }, 5000);
+        }
+    });
+}
+
+/**
+ * @function hideandShowElement
+ * description: Toggle the class .hide on footer and header, toggleing it again after 5 seconds.
+ */
+function hideandShowElement() {
+    footer.classList.toggle('hide');
+    header.classList.toggle('hide');
+
+    setTimeout(() => {
+        footer.classList.toggle('hide');
+        header.classList.toggle('hide');
+    }, 5000);
+}
+
+/* ------------------------- MAIN FUNCTION ---------------------------*/
 
 /**
  * @function main
- * description: Call @getPokemons initializing the page.
+ * description: Call @getPokemons , initialize  @scrollEventListener , hide footer and header after 5 seconds.
  */
 function main() {
     getPokemons(pokeArray())
         .then(data => createObjectPokemon(data))
         .then(pokemon => insertCardinHTML(pokemon));
+
+    setTimeout(() => {
+        footer.classList.toggle('hide');
+        header.classList.toggle('hide');
+        scrollEventListener(scroll);
+    }, 5000);
 }
 main();
