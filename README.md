@@ -34,17 +34,32 @@
 
 `viewMoreButton`: Get data from more Pokemon and starts the @getPokemonbyScroll event listener.
 
-`main`: Call @getPokemons initializing the page.
+`scrollEventListener`: If the user scrolls down the page, the event listener will call @hideandShowElement funtion.
+ * @param {object} `scroll` Object containing the two keys: 
+    * `scroll.scollY` store the position Y of the scroll; 
+    * `scroll.tag` store a boolean value that indicates controlls an internal interval.
+
+`hideandShowElement`: Toggle the **CSS** class `.hide` on footer and header, toggleing it again after 5 seconds.
+
+`main`: description: Call @getPokemons , initialize  @scrollEventListener , hide footer and header after 5 seconds.
 
 ## Global Variables
 
 `page`: Controlls the number of pokemon created and the internal interval from the API calls. 
- * `page.num`: Acumulates a number representing the pokemon id
- * `page.tag`: Controls the internal cooldown of @viewMore
+ * `page.num`: Acumulates a number representing the pokemon id.
+ * `page.tag`: Controls the internal cooldown of @viewMore.
+
+ `scroll`: Controlls the number of pokemon created and the internal interval from the API calls. 
+ * `scroll.scrollY`: store the position Y of the scroll.
+ * `page.tag`: store a boolean value that controlls an internal cooldown of @scrollEventListener.
 
 `pokedex`: Contains a selected html document element. 
 
 `vmbutton`: Contains a selected html document element.
+
+`header`: Contains a selected html document element.
+
+`footer`: Contains a selected html document element.
 
 `url`: Contains two url's adressing to the data and description sources.
 
