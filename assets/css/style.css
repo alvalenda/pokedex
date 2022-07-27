@@ -454,6 +454,22 @@ div.normal {
     background-color: rgba(240, 213, 181, 1);
 }
 
+#wc3-validator{
+    align-items: center;
+    margin:auto;
+}
+
+#wc3-validator p {
+    margin: 2rem auto 0 auto;
+    align-items: center;
+}
+
+#wc3-validator a img{
+   display: block;
+   margin: 0 auto;
+   width: 5rem;
+}
+
 /* FOOTER */
 .hide {
     visibility: hidden;
