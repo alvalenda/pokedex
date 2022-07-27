@@ -9,12 +9,16 @@
  * description: Creates an Array with the id of the first 150 pokemon. Increment page.num for each new pokemon.
  * @returns {Array} An array with the id of the first 150
  */
-function initializePokedex() {
-    const classical = Array(150)
-        .fill()
-        .map(() => page.num++);
+async function initializePokedex() {
+    const classical = [
+        await getPokemons(pokeArray()).then(data => createObjectPokemon(data)),
+        await getPokemons(pokeArray()).then(data => createObjectPokemon(data)),
+        await getPokemons(pokeArray()).then(data => createObjectPokemon(data)),
+    ];
 
-    return classical;
+    classical.forEach((value, i) => {
+        insertCardinHTML(value);
+    });
 }
 
 /**
@@ -22,9 +26,7 @@ function initializePokedex() {
  * description: Call @getPokemons , initialize  @scrollEventListener , hide footer and header after 5 seconds.
  */
 function main() {
-    getPokemons(initializePokedex())
-        .then(data => createObjectPokemon(data))
-        .then(pokemon => insertCardinHTML(pokemon));
+    initializePokedex();
 
     setTimeout(() => {
         hidden.forEach(element => element.classList.toggle('hide'));
