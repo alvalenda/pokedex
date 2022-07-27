@@ -41,7 +41,7 @@
 
 `hideandShowElement`: Toggle the **CSS** class `.hide` on html document elements selected by `hidden`, toggleing it again after 5 seconds.
 
-`main`: description: Call @getPokemons , initialize  @scrollEventListener , hide footer and header after 5 seconds.
+`main`: Call @getPokemons , initialize  @scrollEventListener , hide footer and header after 5 seconds.
 
 ## Global Variables
 
