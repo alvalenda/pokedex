@@ -47,7 +47,7 @@ header {
     transition: all 1s ease-in-out;
 }
 
-@supports ((-webkit-backdrop-filter: none;) or (backdrop-filter: none)) {
+@supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
     header {
         background-color: rgba(100, 45, 45, 0.6);
         backdrop-filter: blur(3px);
@@ -73,12 +73,17 @@ header h1 {
     box-sizing: border-box;
     border-radius: 12px;
     box-shadow: 2px 2px rgba(100, 45, 45, 0.3);
-    outline: none;
     border: 0 none;
     margin-top: 5rem;
     height: 2rem;
     width: 15rem;
     padding: 0 1rem 0 1rem;
+    transition: all 1s ease;
+}
+
+#search-input:focus {
+    outline: none;
+    transform: scale(1.25);
 }
 
 ::placeholder {
@@ -167,7 +172,7 @@ li.card:hover {
 
 .card-type h3 {
     margin-right: 0.7rem;
-    margin-bottom: 0rem;
+    margin-bottom: 0;
 }
 
 .card-title {
@@ -465,7 +470,7 @@ footer {
     transition: all 1s ease-in-out;
 }
 
-@supports ((-webkit-backdrop-filter: none;) or (backdrop-filter: none)) {
+@supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
     footer {
         background-color: rgba(100, 45, 45, 0.6);
         backdrop-filter: blur(3px);
@@ -502,7 +507,6 @@ footer section span {
 /* width 640px */
 @media screen and (max-width: 768px) {
     #cards {
-        max-width: 100%;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
@@ -531,7 +535,7 @@ footer section span {
     .modal h3 {
         text-align: center;
         font-size: 2rem;
-        padding: 0rem 0.5rem 0rem 0.5rem;
+        padding: 0 0.5rem 0 0.5rem;
     }
 
     .modal h3 {
@@ -557,7 +561,7 @@ footer section span {
     .modal-container-1 {
         height: 50%;
         width: 90%;
-        padding-left: 0rem;
+        padding-left: 0;
     }
 
     .modal-image {
@@ -571,18 +575,18 @@ footer section span {
     .modal-container-2 {
         height: 50%;
         width: 90%;
-        padding: 0rem 0 0rem 0;
+        padding: 0 0 0 0;
     }
 
     .modal-type {
         padding: 0.2rem 0.5rem 0.2rem 0.5rem;
-        margin: 0rem 0rem 0rem 0.5rem;
+        margin: 0 0 0 0.5;
         /* text-align: center; */
     }
 
     .modal-description {
         padding: 0.3rem 0.5rem 0.3rem 0.5rem;
-        margin: 0rem 0rem 0.75rem 0rem;
+        margin: 0 0 0.75rem 0;
         font-size: 1.3rem;
         line-height: 1.7rem;
         width: 90%;
@@ -612,7 +616,7 @@ footer section span {
     }
 
     footer section {
-        padding: 0.2rem 1rem 0rem 1rem;
+        padding: 0.2rem 1rem 0 1rem;
     }
 }
 
@@ -625,7 +629,7 @@ footer section span {
     .modal h2,
     .modal h3 {
         font-size: 1.6rem;
-        padding: 0rem 0.75rem 0rem 0.75rem;
+        padding: 0 0.75rem 0 0.75rem;
     }
 
     .modal h3 {
