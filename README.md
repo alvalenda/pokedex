@@ -39,7 +39,7 @@
     * `scroll.scollY` store the position Y of the scroll; 
     * `scroll.tag` store a boolean value that indicates controlls an internal interval.
 
-`hideandShowElement`: Toggle the **CSS** class `.hide` on footer and header, toggleing it again after 5 seconds.
+`hideandShowElement`: Toggle the **CSS** class `.hide` on html document elements selected by `hidden`, toggleing it again after 5 seconds.
 
 `main`: description: Call @getPokemons , initialize  @scrollEventListener , hide footer and header after 5 seconds.
 
@@ -57,9 +57,7 @@
 
 `vmbutton`: Contains a selected html document element.
 
-`header`: Contains a selected html document element.
-
-`footer`: Contains a selected html document element.
+`hidden`: Contains a selected html document element.
 
 `url`: Contains two url's adressing to the data and description sources.
 

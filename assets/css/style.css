@@ -62,14 +62,37 @@ header h1 {
     gap: 1rem;
 }
 
+#search-container {
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+    margin: auto 0;
+}
+
+#search-input {
+    box-sizing: border-box;
+    border-radius: 12px;
+    box-shadow: 2px 2px rgba(100, 45, 45, 0.3);
+    outline: none;
+    border: 0 none;
+    margin-top: 5rem;
+    height: 2rem;
+    width: 15rem;
+    padding: 0 1rem 0 1rem;
+}
+
+::placeholder {
+    text-align: center;
+}
+
 /*MAIN  */
-main{
+main {
     padding-bottom: 4rem;
 }
 
 /* CARDS */
 #cards {
-    padding-top: 4rem;
+    padding-top: 3rem;
     max-width: 90%;
     padding-inline-start: 0;
     display: grid;
@@ -88,6 +111,7 @@ li.card {
     align-items: center;
     justify-content: center;
     justify-self: center;
+    max-width: 20rem;
 }
 
 li.card:hover {
@@ -113,7 +137,7 @@ li.card:hover {
 .div-image {
     margin: 0 12.5%;
     display: block;
-    background-color: rgba(255,255,255,0.2);
+    background-color: rgba(255, 255, 255, 0.2);
     border-radius: 50%;
 }
 
@@ -161,7 +185,7 @@ li.card:hover {
 }
 
 .card-description {
-    background-color: rgba(255,255,255,0.2);
+    background-color: rgba(255, 255, 255, 0.2);
     border-radius: 15px;
     padding: 0.8rem;
     width: 84%;
@@ -180,6 +204,7 @@ li.card:hover {
     left: 0;
     height: 100vh;
     width: 100vw;
+    z-index: 999;
 }
 
 div.card {
@@ -212,7 +237,7 @@ div.card {
 .modal-image {
     margin: 1rem 0 1rem 0;
     display: block;
-    background-color: rgba(255,255,255,0.3);
+    background-color: rgba(255, 255, 255, 0.3);
     border-radius: 50%;
 }
 
@@ -229,7 +254,6 @@ div.card {
     text-align: center;
     background-color: rgba(255, 255, 255, 0.3);
     border-radius: 35px;
-
 }
 
 .modal-container-2 {
@@ -247,7 +271,6 @@ div.card {
     display: flex;
     justify-content: center;
 }
-
 
 .modal h2,
 .modal h3 {
@@ -298,15 +321,15 @@ div.card {
     width: 80%;
     font-size: 1.5rem;
     line-height: 20%;
-    box-shadow: 0px 16px 0px rgba(255,248,220, 0.5);
-    
+    box-shadow: 0px 16px 0px rgba(255, 248, 220, 0.5);
 }
 
-#viewmore-button{
+#viewmore-button {
     position: relative;
     margin: 0 auto;
     margin-top: 2rem;
-    display:block;
+    /* javascript will set to block */
+    display: none;
     width: 10rem;
     height: 4rem;
 }
@@ -324,22 +347,23 @@ button {
     color: rgba(100, 45, 45, 0.9);
     box-shadow: 3px 3px rgba(100, 45, 45, 0.4);
     border-radius: 5px;
+    z-index: 1;
 }
 
-button:hover{
+button:hover {
     color: rgba(100, 45, 45, 0.9);
     background-color: rgba(255, 255, 255, 0.8);
 }
 
-button:active{
+button:active {
     color: rgba(100, 45, 45, 0.8);
-    box-shadow: -3px -3px rgba(100, 45, 45, 0.4)
+    box-shadow: -3px -3px rgba(100, 45, 45, 0.4);
 }
 
 /* BACKGROUND CARDS AND MODAL-CARDS BY TYPE COLOR*/
 li.grass,
 div.grass {
-    background-color: rgba(216,226,182, 1);
+    background-color: rgba(216, 226, 182, 1);
 }
 
 li.fire,
@@ -349,32 +373,32 @@ div.fire {
 
 li.water,
 div.water {
-    background-color: rgba(162,193,223, 1);
+    background-color: rgba(162, 193, 223, 1);
 }
 
 li.ice,
 div.ice {
-    background-color: rgba(178,232,214, 1);
+    background-color: rgba(178, 232, 214, 1);
 }
 
 li.bug,
 div.bug {
-    background-color: rgba(204,217,159, 1);
+    background-color: rgba(204, 217, 159, 1);
 }
 
 li.poison,
 div.poison {
-    background-color: rgba(219,183,208, 1);
+    background-color: rgba(219, 183, 208, 1);
 }
 
 li.ground,
 div.ground {
-    background-color: rgba(232,197,160, 1);
+    background-color: rgba(232, 197, 160, 1);
 }
 
 li.fairy,
 div.fairy {
-    background-color: rgba(255,201,188, 1);
+    background-color: rgba(255, 201, 188, 1);
 }
 
 li.electric,
@@ -385,47 +409,51 @@ div.electric {
 
 li.fighting,
 div.fighting {
-    background-color: rgba(249,188,137, 1);
+    background-color: rgba(249, 188, 137, 1);
 }
 
 li.rock,
 div.rock {
-    background-color: rgba(224,198,177, 1);
+    background-color: rgba(224, 198, 177, 1);
 }
 
 li.ghost,
 div.ghost {
-    background-color: rgba(183,157,173, 1);
+    background-color: rgba(183, 157, 173, 1);
 }
 
 li.psychic,
 div.psychic {
-    background-color: rgba(252,172,172, 1);
+    background-color: rgba(252, 172, 172, 1);
 }
 
 li.dark,
 div.dark {
-    background-color: rgba(178,159,182, 1);
+    background-color: rgba(178, 159, 182, 1);
 }
 
 li.dragon,
 div.dragon {
-    background-color: rgba(178,164,214, 1);
+    background-color: rgba(178, 164, 214, 1);
 }
 
 li.steel,
 div.steel {
-    background-color: rgba(191,188,206, 1);
+    background-color: rgba(191, 188, 206, 1);
 }
 
 li.normal {
     background-color: rgb(240, 210, 180);
 }
 div.normal {
-    background-color: rgba(240,213,181, 1);
+    background-color: rgba(240, 213, 181, 1);
 }
 
 /* FOOTER */
+.hide {
+    visibility: hidden;
+    opacity: 0;
+}
 
 footer {
     width: 100%;
@@ -435,11 +463,6 @@ footer {
     background-color: rgba(100, 45, 45, 0.8);
     border-top: 2px solid rgba(100, 45, 45, 0.2);
     transition: all 1s ease-in-out;
-}
-
-.hide {
-    visibility: hidden;
-    opacity: 0;
 }
 
 @supports ((-webkit-backdrop-filter: none;) or (backdrop-filter: none)) {
@@ -462,6 +485,13 @@ footer section div {
     display: flex;
 }
 
+footer a {
+    display: flex;
+    align-items: center;
+    min-width: 12rem;
+    max-height: 2.5rem;
+}
+
 footer section span {
     color: rgb(226, 43, 43);
 }
@@ -481,7 +511,7 @@ footer section span {
         min-width: 20rem;
     }
 
-    div .card{
+    div .card {
         text-shadow: 1.2px 1.2px 1px rgba(100, 45, 45, 0.8);
     }
 
@@ -497,7 +527,8 @@ footer section span {
         width: 100vw;
     }
 
-    .modal h2, .modal h3 {
+    .modal h2,
+    .modal h3 {
         text-align: center;
         font-size: 2rem;
         padding: 0rem 0.5rem 0rem 0.5rem;
@@ -508,7 +539,7 @@ footer section span {
         padding-top: 0;
         padding-bottom: 0;
     }
-    
+
     div.card {
         flex-direction: column;
         flex-wrap: wrap;
@@ -518,7 +549,7 @@ footer section span {
         min-height: 50%;
         max-width: 70%;
     }
-    
+
     .card-title {
         width: 90%;
     }
@@ -548,7 +579,7 @@ footer section span {
         margin: 0rem 0rem 0rem 0.5rem;
         /* text-align: center; */
     }
-    
+
     .modal-description {
         padding: 0.3rem 0.5rem 0.3rem 0.5rem;
         margin: 0rem 0rem 0.75rem 0rem;
@@ -560,7 +591,7 @@ footer section span {
     .modal-stats {
         display: flex;
         flex-direction: column;
-        justify-content:space-around;
+        justify-content: space-around;
         align-items: center;
         min-height: 18rem;
         margin-bottom: 2rem;
@@ -570,13 +601,12 @@ footer section span {
     .modal-stat {
         width: 95%;
         font-size: 1.3rem;
-        
     }
 
-    button{
+    button {
         display: none;
     }
-    
+
     footer {
         height: 1.8rem;
     }
@@ -584,7 +614,6 @@ footer section span {
     footer section {
         padding: 0.2rem 1rem 0rem 1rem;
     }
-
 }
 
 @media screen and (max-width: 540px) {
@@ -593,7 +622,8 @@ footer section span {
         max-width: 90%;
     }
 
-    .modal h2, .modal h3 {
+    .modal h2,
+    .modal h3 {
         font-size: 1.6rem;
         padding: 0rem 0.75rem 0rem 0.75rem;
     }
@@ -618,10 +648,9 @@ footer section span {
         min-height: 16rem;
         margin: 0.25rem 0 1.5rem 0;
     }
-    
+
     .modal-stat {
         width: 90%;
         font-size: 1.2rem;
-        
     }
 }

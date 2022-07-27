@@ -9,9 +9,17 @@
         <title>Pokédex</title>
     </head>
     <body>
-        <header id="header-container">
+        <header class="hidden-container">
             <h1><a href="#"> Pokédex </a></h1>
         </header>
+        <div id="search-container">
+            <input
+                type="text"
+                id="search-input"
+                placeholder="search pokémon"
+                onkeyup="searchPokemon()"
+            />
+        </div>
         <main>
             <ol id="cards"></ol>
             <button
@@ -21,18 +29,25 @@
             >
                 View More
             </button>
-            <footer id="footer-container">
+            <footer class="hidden-container">
                 <section>
                     <div>&copy; 2022</div>
                     <div id="footer-logo">
-                        Powered by
-                        <p>&nbspAlvacode &nbsp</p>
-                        <span> &lt;/&gt; </span>
+                        <a
+                            href="https://alvalenda.github.io/portfolio/"
+                            target="_blank"
+                        >
+                            Powered by
+                            <p>&nbspAlvacode &nbsp</p>
+                            <span> &lt;/&gt; </span></a
+                        >
                     </div>
                 </section>
             </footer>
         </main>
 
+        <script src="./assets/js/api.js"></script>
+        <script src="./assets/js/utils.js"></script>
         <script src="./assets/js/script.js"></script>
     </body>
 </html>
