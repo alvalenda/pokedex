@@ -7,7 +7,7 @@
 /**
  * @function initializePokedex
  * description: Creates an Array with the id of the first 150 pokemon. Increment page.num for each new pokemon.
- * @returns {Array} An array with the id of the first 150
+ * @returns {promise} A promise wrapping the an array containg the first 150 pokemon. Increment page.num for each new pokemon.
  */
 async function initializePokedex() {
     const classical = [
@@ -16,9 +16,7 @@ async function initializePokedex() {
         await getPokemons(pokeArray()).then(data => createObjectPokemon(data)),
     ];
 
-    classical.forEach((value, i) => {
-        insertCardinHTML(value);
-    });
+    return classical;
 }
 
 /**
@@ -26,7 +24,11 @@ async function initializePokedex() {
  * description: Call @getPokemons , initialize  @scrollEventListener , hide footer and header after 5 seconds.
  */
 function main() {
-    initializePokedex();
+    initializePokedex().then(classical =>
+        classical.forEach(value => {
+            insertCardinHTML(value);
+        }),
+    );
 
     setTimeout(() => {
         hidden.forEach(element => element.classList.toggle('hide'));
