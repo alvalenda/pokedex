@@ -120,7 +120,7 @@ li.card {
 }
 
 li.card:hover {
-    animation: bounce 0.25s linear;
+    animation: bounce 0.3s linear;
     cursor: pointer;
 }
 
@@ -129,11 +129,11 @@ li.card:hover {
         transform: translateY(0);
     }
 
-    25% {
+    30% {
         transform: translateY(-0.5rem);
     }
 
-    50% {
+    60% {
         transform: translateY(0rem);
     }
 }
