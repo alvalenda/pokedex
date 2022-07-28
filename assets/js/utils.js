@@ -8,7 +8,7 @@ const input = document.querySelector('#search-input');
  * @param {object} scroll Object containing the two keys: scroll.scollY store the position Y of the scroll; scroll.tag store a boolean value that indicates controlls an internal interval.
  */
 function scrollEventListener(scroll) {
-    window.addEventListener('scroll', function () {
+    window.addEventListener('scroll', () => {
         if (scroll.tag === false) {
             scroll.tag = true;
 
