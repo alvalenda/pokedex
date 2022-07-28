@@ -23,11 +23,7 @@ async function initializePokedex() {
  * description: Call @getPokemons , initialize  @scrollEventListener , hide footer and header after 5 seconds.
  */
 function main() {
-    getPokemons(pokeArray())
-        .then(data => createObjectPokemon(data))
-        .then(value => {
-            insertCardinHTML(value);
-        });
+    createPokemonCards();
 
     initializePokedex().then(classical =>
         classical.forEach(value => {

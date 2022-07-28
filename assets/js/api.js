@@ -19,6 +19,16 @@ const pokeArray = () =>
         .map(() => page.num++);
 
 /**
+ *@function createObjectPokemon
+ * description: Call @getPokemons passing @pokeArray as argument. Then call @createObjectPokemon and finally call @insertCardinHTML
+ */
+const createPokemonCards = () => {
+    getPokemons(pokeArray())
+        .then(data => createObjectPokemon(data))
+        .then(pokemon => insertCardinHTML(pokemon));
+};
+
+/**
  * @function getPokemons
  * description: Access pokemon API (pokeapi.co) to get the pokemon raw data.
  * @param {array} pokeArray an Array of integer elements representing pokemon id's
@@ -207,9 +217,8 @@ function closeModal() {
 function viewMore() {
     if (page.tag === true) return;
     page.tag = true;
-    getPokemons(pokeArray())
-        .then(data => createObjectPokemon(data))
-        .then(pokemon => insertCardinHTML(pokemon));
+
+    createPokemonCards();
 
     setTimeout(() => {
         page.tag = false;
@@ -237,9 +246,7 @@ function getPokemonbyScroll() {
  * description: Get data from more Pokemon and starts the @getPokemonbyScroll event listener.
  */
 function viewMoreButton() {
-    getPokemons(pokeArray())
-        .then(data => createObjectPokemon(data))
-        .then(pokemon => insertCardinHTML(pokemon));
+    createPokemonCards();
 
     vmbutton.style.display = 'none';
 
