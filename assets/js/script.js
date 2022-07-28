@@ -13,7 +13,6 @@ async function initializePokedex() {
     const classical = [
         await getPokemons(pokeArray()).then(data => createObjectPokemon(data)),
         await getPokemons(pokeArray()).then(data => createObjectPokemon(data)),
-        await getPokemons(pokeArray()).then(data => createObjectPokemon(data)),
     ];
 
     return classical;
@@ -24,6 +23,12 @@ async function initializePokedex() {
  * description: Call @getPokemons , initialize  @scrollEventListener , hide footer and header after 5 seconds.
  */
 function main() {
+    getPokemons(pokeArray())
+        .then(data => createObjectPokemon(data))
+        .then(value => {
+            insertCardinHTML(value);
+        });
+
     initializePokedex().then(classical =>
         classical.forEach(value => {
             insertCardinHTML(value);
